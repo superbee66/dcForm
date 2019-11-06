@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9065636-B397-4FB3-B9DE-8FE5A754210A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dCForm.Core</RootNamespace>
+    <AssemblyName>dCForm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;NET40;DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <NoWarn>
+    </NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>NET40;</DefineConstants>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DocRevDateTimeExtension.cs" />
+    <Compile Include="Format\DocInterpreter.cs" />
+    <Compile Include="Format\Docx\DocxInterpreter.cs" />
+    <Compile Include="Format\IDocByteInterpreter.cs" />
+    <Compile Include="Format\IDocDataInterpreter.cs" />
+    <Compile Include="Format\IDocTextInterpreter.cs" />
+    <Compile Include="Format\Json\JsonContentBuilder.cs" />
+    <Compile Include="Format\Json\JsonContentResources.cs" />
+    <Compile Include="Format\Json\JsonInterpreter.cs" />
+    <Compile Include="Format\Json\OnlyPIContractResolver.cs" />
+    <Compile Include="Format\Json\WithoutPIContractResolver.cs" />
+    <Compile Include="Format\Json\WithPIContractResolver.cs" />
+    <Compile Include="Format\XsnXml\BaseDocExtensions.cs" />
+    <Compile Include="Format\XsnXml\InfoPathAttachmentEncoder.cs" />
+    <Compile Include="Format\XsnXml\ManifestRewriter.cs" />
+    <Compile Include="Format\XsnXml\SchemaValidator.cs" />
+    <Compile Include="Format\XsnXml\XsnXmlInterpreter.cs" />
+    <Compile Include="BaseAutoIdent.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="DocExchange.cs" />
+    <Compile Include="IDocTerm.cs" />
+    <Compile Include="LightDocExtensions.cs" />
+    <Compile Include="Runtime.cs" />
+    <Compile Include="RuntimeTypeNamer.cs" />
+    <Compile Include="Storage\Nosql\BaseDocExtensions.cs" />
+    <Compile Include="Storage\Nosql\DocumentExtensions.cs" />
+    <Compile Include="Storage\Nosql\LuceneControllerExtension.cs" />
+    <Compile Include="Storage\Nosql\ShouldSerializeContractResolver.cs" />
+    <Compile Include="Storage\Sql\ModelConfiguration.cs" />
+    <Compile Include="Storage\Sql\Reverser\TextTemplatingEngineHost.cs" />
+    <Compile Include="Storage\Sql\Reverser\Entity.cs" />
+    <Compile Include="Storage\Sql\Reverser\Handler.cs" />
+    <Compile Include="Storage\Sql\Reverser\EntityBase.cs" />
+    <Compile Include="Storage\Sql\SqlDbMigrationsConfiguration.cs" />
+    <Compile Include="Storage\Sql\SqlTableAttributeConvention.cs" />
+    <Compile Include="Template\Embeded\DOCREV_SCHEMAS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DOCREV_SCHEMAS.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Embeded\EmbededTemplateController.cs" />
+    <Compile Include="Template\Filesystem\FilesystemTemplateController.cs" />
+    <Compile Include="Template\Nosql\NosqlTemplateController.cs" />
+    <Compile Include="Template\TemplateController.cs" />
+    <Compile Include="IBaseDoc.cs" />
+    <Compile Include="IDocProcessingInstructions.cs" />
+    <Compile Include="Template\ITemplateController.cs" />
+    <Compile Include="MyException.cs" />
+    <Compile Include="Storage\Sql\BaseDocExtensions.cs" />
+    <Compile Include="DocKey.cs" />
+    <Compile Include="DocRevHandler.cs" />
+    <Compile Include="IDocRev.cs" />
+    <Compile Include="ImporterController.cs" />
+    <Compile Include="InfoController.cs" />
+    <Compile Include="Util\Cab\CabInfoExtensions.cs" />
+    <Compile Include="Util\Base36.cs" />
+    <Compile Include="Util\Cab\CabExtract.cs" />
+    <Compile Include="Util\CustomAttributeDataExtensions.cs" />
+    <Compile Include="Storage\Sql\Merge\ClassMerger.cs" />
+    <Compile Include="Storage\Sql\Merge\ClassProperty.cs" />
+    <Compile Include="Storage\Sql\Merge\ClassSignature.cs" />
+    <Compile Include="Storage\Sql\Merge\ImplicitTypeConversionExtension.cs" />
+    <Compile Include="Util\ExceptionExtrensions.cs" />
+    <Compile Include="Util\ObjectDumper.cs" />
+    <Compile Include="Util\Reflection.cs" />
+    <Compile Include="Util\SelfMarshalByRefObject.cs" />
+    <Compile Include="Util\StringExtensions.cs" />
+    <Compile Include="Util\Xsd\Res.cs" />
+    <Compile Include="Util\TypeExtensions.cs" />
+    <Compile Include="Util\MimeExtensionHelper.cs" />
+    <Compile Include="ServiceController.cs" />
+    <Compile Include="DocTerm.cs" />
+    <Compile Include="IDocData.cs" />
+    <Compile Include="Storage\Nosql\LuceneController.cs" />
+    <Compile Include="DocDataHandler.cs" />
+    <Compile Include="DocProcessingInstructions.cs" />
+    <Compile Include="Nav.cs" />
+    <Compile Include="FormsMigrationsCode\*.cs" />
+    <Compile Include="Storage\Sql\SqlDBContext.cs" />
+    <Compile Include="Storage\Sql\SqlDB.cs" />
+    <Compile Include="IDocFormatting.cs" />
+    <Compile Include="Storage\Sql\SqlController.cs" />
+    <Compile Include="Util\Xsd\XmlSerializationReader1.cs" />
+    <Compile Include="Util\Xsd\Xsd.cs" />
+    <Compile Include="Util\Xsd\XsdExporter.cs" />
+    <Compile Include="Util\Xsd\XsdParameters.cs" />
+    <Compile Include="Util\Xsd\XsdParametersSerializer.cs" />
+    <Compile Include="Util\Zip\Compressor.cs" />
+    <Compile Include="Util\Zip\RuntimeBinaryFormatter.cs" />
+    <Compile Include="Util\_namespaceComments.cs" />
+    <Compile Include="Util\Cab\CabinetInfo.cs" />
+    <Compile Include="Util\PropertyOverlay.cs" />
+    <Compile Include="Util\Serialization.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\DateTimeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\DictionaryExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Html.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Rand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\UrlParms.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!--<Include="FormsMigrationsCode\*.resx"/>-->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDoc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.DynamicData.EFProvider">
+      <HintPath>..\packages\Microsoft.AspNet.DynamicData.EFProvider.6.0.0\lib\net40\Microsoft.AspNet.DynamicData.EFProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource">
+      <HintPath>..\packages\Microsoft.AspNet.EntityDataSource.6.0.0\lib\net40\Microsoft.AspNet.EntityDataSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Deployment.Compression">
+      <HintPath>..\packages\MSFTCompressionCab.1.0.0\lib\Microsoft.Deployment.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Deployment.Compression.Cab">
+      <HintPath>..\packages\MSFTCompressionCab.1.0.0\lib\Microsoft.Deployment.Compression.Cab.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.XML, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Format\Json\JsonContentResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\Embeded\DOCREV_SCHEMAS.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DOCREV_SCHEMAS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\template.json" />
+    <None Include="Util\readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\DOCREV_1_0_0_5.cab" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DOCREV_1_0_0_7.cab" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DOCREV_1_0_0_6.cab" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\readme.txt" />
+    <None Include="Resources\default.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Client\dCForm.Client.csproj">
+      <Project>{6fffc718-3d54-4e34-8a46-9b7433a3b1d6}</Project>
+      <Name>dCForm.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

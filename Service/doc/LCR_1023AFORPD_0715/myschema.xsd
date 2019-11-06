@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.progablab.com/LCR_1023AFORPD_0715" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LCR_1023AFORPD_0715" nillable="true" xmlns:q1="http://schemas.progablab.com/LCR_1023AFORPD_0715" type="q1:LCR_1023AFORPD_0715" />
+  <xsd:complexType name="LCR_1023AFORPD_0715">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorSiteName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DateOfAssessment" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TimeOfAssessment" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorSiteStreet" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorSiteCity" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorZip" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbNewApplicationRenewalAddressChangeSpecialRequest" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbTypeOfSettingHcbsRespiteDayProgramTherapy" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702RbInteriorExteriorInGoodRepairFreeOfDamagePosesAHazardYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702InteriorExteriorInGoodRepairFreeOfDamagePosesAHazardNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702RbPlayAsTherapyEquipmentInGoodRepairYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702PlayAsTherapyEquipmentInGoodRepairNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702RbSettingIsCleanToTheDegreeTheConditionDoesNotConstituteAHazardYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702SettingIsCleanToTheDegreeTheConditionDoesNotConstituteAHazardNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702RbGarbageIsRemovedFromTheSettingPremisesAtLeastOnceEachWeekYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702GarbageIsRemovedFromTheSettingPremisesAtLeastOnceEachWeekNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702RbTheSettingOutsidePlayAsFreeOfInsectRodentManifestationYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618702TheSettingOutsidePlayAsFreeOfInsectRodentManifestationNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbSettingHasASystemToLockHighlyToxicSubstancesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703SettingHasASystemToLockHighlyToxicSubstancesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbSettingHasASystemToSafeguardCleaningSuppliesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703SettingHasASystemToSafeguardCleaningSuppliesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703SpecifySystemForSafeGuardingNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbWeaponsSafeguardedYesNoNoWeapons" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703WeaponsSafeguardedNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbFirearmsLockedInAnUnbreakableContainerYesNoNoFireArms" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703FirearmsLockedInAnUnbreakableContainerNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbFirearmsTriggerLockedOrRenderedInoperableYesNoNoFireArms" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703FirearmsTriggerLockedOrRenderedInoperableNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703NumberOfFirearms" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbAmmunitionIsLockedSeparateFromFirearmsYesNoNoAmmunition" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703AmmunitionIsLockedSeparateFromFirearmsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbBathtubsShowersRampsHaveSlipResistantSurfacesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703BathtubsShowersRampsHaveSlipResistantSurfacesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbHrailsGrabBarsSecurelyAttachedStationaryYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703HrailsGrabBarsSecurelyAttachedStationaryNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbSkirtingIsIntactAroundTheBaseOfTheSettingIfAMobileHomeYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703SkirtingIsIntactAroundTheBaseOfTheSettingIfAMobileHomeNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbAnimalsDoNotPoseAHazardDueToBehaviorDiseaseEtcYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703AnimalsDoNotPoseAHazardDueToBehaviorDiseaseEtcNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703AnimalsDoNotPoseAHazardDueToBehaviorDiseaseEtcDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703RbEvidenceIsAvailableInTheSettingForEachDogSCurrentRabiesYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703EvidenceIsAvailableInTheSettingForEachDogSCurrentRabiesNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703EvidenceIsAvailableInTheSettingForEachDogSCurrentRabiesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703VaccinationsTextBox1" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703VaccinationsTextBox2" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703VaccinationsTextBox3" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618703VaccinationsTextBox4" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704RbPrescriptionOverTheCounterMedicationsInTheSettingLockedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704PrescriptionOverTheCounterMedicationsInTheSettingLockedNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618704PrescriptionOverTheCounterMedicationsInTheSettingLockedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704RbMedicationsMustBeReadilyAvailableOrMayBeAccessedPerAnIndividualSCasePlanSafeguardedYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704MedicationsMustBeReadilyAvailableOrMayBeAccessedPerAnIndividualSCasePlanSafeguardedNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618704MedicationsMustBeReadilyAvailableOrMayBeAccessedPerAnIndividualSCasePlanSafeguardedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704MedicationsMustBeRefrigeratedLockedWithoutPreventingAccessToRefrigeratedFoodYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618704MedicationsMustBeRefrigeratedLockedWithoutPreventingAccessToRefrigeratedFoodNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618704MedicationsMustBeRefrigeratedLockedWithoutPreventingAccessToRefrigeratedFoodDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbAppliancesForRefrigeratingCookingFoodFunctioningSafeYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705AppliancesForRefrigeratingCookingFoodFunctioningSafeNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705RefrigeratorTemperature" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbSettingHasSufficientLightingToPerformNormalActivitiesMBedroomsLivingProgramAsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705SettingHasSufficientLightingToPerformNormalActivitiesMBedroomsLivingProgramAsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbSettingHasAdequateHeatingAndCoolingAsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705SettingHasAdequateHeatingAndCoolingAsNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705InteriorTemperature" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbSettingHasAnOperableTelephoneYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705SettingHasAnOperableTelephoneNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbTheClothesDryerIsSafelyVentedWithANonFlammableVentHoseYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705TheClothesDryerIsSafelyVentedWithANonFlammableVentHoseNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbEachPortableHeaterMeetsTheFollowingStardsYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705EachPortableHeaterMeetsTheFollowingStardsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbElectricUlApprovedEquippedWithATipOverShutOffSwitchYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705ElectricUlApprovedEquippedWithATipOverShutOffSwitchNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbHasAProtectiveCoveringForTheHeatingElementYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705HasAProtectiveCoveringForTheHeatingElementNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbIsPlacedAtLeast3IiFromFlammableObjectWhenInUseYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705IsPlacedAtLeast3IiFromFlammableObjectWhenInUseNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbIsNotUsedInBedroomsOrAsThePrimarySourceForHeatInTheSettingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbIsNotUsedInBedroomsOrAsThePrimarySourceForHeatInTheSettingNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705RbACarbonMonoxideDetectorIsInstalledOnEachLevelHasAFireBurningApplianceOrHeatingDeviceYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618705ACarbonMonoxideDetectorIsInstalledOnEachLevelHasAFireBurningApplianceOrHeatingDeviceNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbWiringAppearsSafeYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706WiringAppearsSafeNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbLightSocketsHaveLightBulbsAreSafelyCoveredToPreventElectricalShockYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706LightSocketsHaveLightBulbsAreSafelyCoveredToPreventElectricalShockNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbPanelsOutletsAreCoveredAndHaveNoExposedWiringYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706PanelsOutletsAreCoveredAndHaveNoExposedWiringNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbOutletsAreNotOverloadedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706OutletsAreNotOverloadedNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbCordsAreInGoodConditionNoBrokenOrFrayedCordsAreInUseYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706CordsAreInGoodConditionNoBrokenOrFrayedCordsAreInUseNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbExtensionCordsAreNotUsedOnAPermanentBasisYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706ExtensionCordsAreNotUsedOnAPermanentBasisNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbMidSizedAppliancesArePluggedIntoGroundedOutletsPowerStripsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706MidSizedAppliancesArePluggedIntoGroundedOutletsPowerStripsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706RbMajorOrAppliancesArePluggedDirectlyIntoGroundedOutletsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618706MajorOrAppliancesArePluggedDirectlyIntoGroundedOutletsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707RbTheSettingHasAContinuousSourceOfSafeDrinkingWaterYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707TheSettingHasAContinuousSourceOfSafeDrinkingWaterNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707RbHotWaterTemperatureInAreasForBathingDoesNotExceed120FYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707HotWaterTemperatureInAreasForBathingDoesNotExceed120FNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707hotWaterTemperature" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707RbSewageDisposalIsFunctioningWithNoVisibleSignsOfLeakageYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707SewageDisposalIsFunctioningWithNoVisibleSignsOfLeakageNotes" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707numberOfWorkingToilets" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707showerAndTubs" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707bathroomSinks" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707RbSettingHasAtLeast1WorkingToiletSinkAndTubShowerPer10ResidentsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618707SettingHasAtLeast1WorkingToiletSinkAndTubShowerPer10ResidentsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbFlammablesCombustiblesStoredMoreThan3FeetFromTheHotWaterHeaterOtherHeatSourcesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708FlammablesCombustiblesStoredMoreThan3FeetFromTheHotWaterHeaterOtherHeatSourcesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbWorkingFireplacesWoodStovesProtectedByFireScreensYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708WorkingFireplacesWoodStovesProtectedByFireScreensNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbSettingHasAtLeastOneFunctioningFireExtinguisherWithAMinimumRatingOf2A1ObcOnEachLevelYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708SettingHasAtLeastOneFunctioningFireExtinguisherWithAMinimumRatingOf2A1ObcOnEachLevelNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbSettingHasAtLeastOneWorkingSmokeDetectorOnEachLevelYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708SettingHasAtLeastOneWorkingSmokeDetectorOnEachLevelNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbSettingHasAtLeastOneWorkingSmokeDetectorInEachBedroomYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708SettingHasAtLeastOneWorkingSmokeDetectorInEachBedroomNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbSettingHasAnEmergencyEvacuationPlanWhichMeetsTheFollowingStardsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708SettingHasAnEmergencyEvacuationPlanWhichMeetsTheFollowingStardsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbIdentifiesTwoRoutesToEvacuateFromBedroomsUsedForCYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708IdentifiesTwoRoutesToEvacuateFromBedroomsUsedForCNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbIdentifiesTheLocationOfFireExtinguishersFireEvacuationEquipmentYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708IdentifiesTheLocationOfFireExtinguishersFireEvacuationEquipmentNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbDesignatesASafeMeetingPlaceOutsideTheSettingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708DesignatesASafeMeetingPlaceOutsideTheSettingNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbIsMaintainedInTheSettingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708IsMaintainedInTheSettingNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbExitsFromTheSettingUnobstructedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708ExitsFromTheSettingUnobstructedNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbBedroomsUsedForCMustHaveAnExitOpensDirectlyToTheOutsideYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708BedroomsUsedForCMustHaveAnExitOpensDirectlyToTheOutsideNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbLocksBarsOnWindowsInBedroomsUsedForCOnDoorsLeadingToTheOutsideHaveAQuickReleaseMechanismYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708LocksBarsOnWindowsInBedroomsUsedForCOnDoorsLeadingToTheOutsideHaveAQuickReleaseMechanismNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbSettingsProvidingCTo6OrMoreIndividualsPracticeDocumentAnEvacuationDrillAtLeastOnceEvery3MonthsYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708SettingsProvidingCTo6OrMoreIndividualsPracticeDocumentAnEvacuationDrillAtLeastOnceEvery3MonthsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708RbTheAddressForTheSettingIsPostedVisibleFromTheStreetYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618708TheAddressForTheSettingIsPostedVisibleFromTheStreetNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbPoolsMaintainedNotStagnantClearEnoughToSeeThroughTheWaterToTheBottomSurfaceOfThePoolYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709PoolsMaintainedNotStagnantClearEnoughToSeeThroughTheWaterToTheBottomSurfaceOfThePoolNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbIfWaterIsDeeperThan4FtAShepherdsCrookRingBuoyWithAttachedRopeAvailableInThePoolAYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709IfWaterIsDeeperThan4FtAShepherdsCrookRingBuoyWithAttachedRopeAvailableInThePoolANotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbTheEnclosureFenceMeetsTheFollowingStardsYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709TheEnclosureFenceMeetsTheFollowingStardsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbTheExteriorSideOfTheFenceIsAtLeast5FtHighWithNoFootHholdsYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709TheExteriorSideOfTheFenceIsAtLeast5FtHighWithNoFootHholdsNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbIfChainLinkTheMeshMeasuresLessThan1HorizontallyYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709IfChainLinkTheMeshMeasuresLessThan1HorizontallyNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbOpeningsMeasureLessThan4InchesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709OpeningsMeasureLessThan4InchesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbGatesSelfClosingSelfLatchingOpenAwayFromThePoolYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709GatesSelfClosingSelfLatchingOpenAwayFromThePoolNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbTheGateLatchIsAtLeast54AboveTheGroundYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709TheGateLatchIsAtLeast54AboveTheGroundNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbTheGateToTheEnclosureIsLockedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709TheGateToTheEnclosureIsLockedNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbIfTheSettingConstitutesPartOfTheEnclosureTheFollowingStardsMetYesNoNa" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709IfTheSettingConstitutesPartOfTheEnclosureTheFollowingStardsMetNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbTheFenceDoesNotInterfereWithSafeEgressFromTheSettingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709TheFenceDoesNotInterfereWithSafeEgressFromTheSettingNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbADoorFromTheSettingDoesNotOpenWithinThePoolEnclosureYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709ADoorFromTheSettingDoesNotOpenWithinThePoolEnclosureNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbAWindowInABedroomDesignatedForAnIndividualReceivingCIsNotPositionedWithinThePoolEnclosureYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709AWindowInABedroomDesignatedForAnIndividualReceivingCIsNotPositionedWithinThePoolEnclosureNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709RbOtherWindowsWithinThePoolEnclosurePermanentlySecuredToOpenNoMoreThan4InchesYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="R618709OtherWindowsWithinThePoolEnclosurePermanentlySecuredToOpenNoMoreThan4InchesNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbConditionOfSettingFullCompliannceNotFullCompliance" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbConditionOfSettingNotInFullCompliannceLicensingVerifyCorrectionOlcrVerifyCorrection" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DateFullComplianceVerifiedByOlcrDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorComments" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618702InteriorExteriorInGoodRepairFreeOfDamagePosesAHazardDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618702PlayAsTherapyEquipmentInGoodRepairDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618702SettingIsCleanToTheDegreeTheConditionDoesNotConstituteAHazardDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618702GarbageIsRemovedFromTheSettingPremisesAtLeastOnceEachWeekDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618702TheSettingOutsidePlayAsFreeOfInsectRodentManifestationDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703SettingHasASystemToLockHighlyToxicSubstancesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703SettingHasASystemToSafeguardCleaningSuppliesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703WeaponsSafeguardedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703FirearmsLockedInAnUnbreakableContainerDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703FirearmsTriggerLockedOrRenderedInoperableDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703AmmunitionIsLockedSeparateFromFirearmsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703BathtubsShowersRampsHaveSlipResistantSurfacesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703HrailsGrabBarsSecurelyAttachedStationaryDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618703SkirtingIsIntactAroundTheBaseOfTheSettingIfAMobileHomeDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705AppliancesForRefrigeratingCookingFoodFunctioningSafeDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705SettingHasSufficientLightingToPerformNormalActivitiesMBedroomsLivingProgramAsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705SettingHasAdequateHeatingAndCoolingAsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705SettingHasAnOperableTelephoneDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705TheClothesDryerIsSafelyVentedWithANonFlammableVentHoseDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705EachPortableHeaterMeetsTheFollowingStardsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705ElectricUlApprovedEquippedWithATipOverShutOffSwitchDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705HasAProtectiveCoveringForTheHeatingElementDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705IsPlacedAtLeast3IiFromFlammableObjectWhenInUseDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705IsNotUsedInBedroomsOrAsThePrimarySourceForHeatInTheSettingDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618705ACarbonMonoxideDetectorIsInstalledOnEachLevelHasAFireBurningApplianceOrHeatingDeviceDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706WiringAppearsSafeDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706LightSocketsHaveLightBulbsAreSafelyCoveredToPreventElectricalShockDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706PanelsOutletsAreCoveredAndHaveNoExposedWiringDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706OutletsAreNotOverloadedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706CordsAreInGoodConditionNoBrokenOrFrayedCordsAreInUseDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706ExtensionCordsAreNotUsedOnAPermanentBasisDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706MidSizedAppliancesArePluggedIntoGroundedOutletsPowerStripsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618706MajorOrAppliancesArePluggedDirectlyIntoGroundedOutletsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707TheSettingHasAContinuousSourceOfSafeDrinkingWaterDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707HotWaterTemperatureInAreasForBathingDoesNotExceed120FDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707SewageDisposalIsFunctioningWithNoVisibleSignsOfLeakageDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618707SettingHasAtLeast1WorkingToiletSinkAndTubShowerPer10ResidentsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708FlammablesCombustiblesStoredMoreThan3FeetFromTheHotWaterHeaterOtherHeatSourcesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708WorkingFireplacesWoodStovesProtectedByFireScreensDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708SettingHasAtLeastOneFunctioningFireExtinguisherWithAMinimumRatingOf2A1ObcOnEachLevelDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708SettingHasAtLeastOneWorkingSmokeDetectorOnEachLevelDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708SettingHasAtLeastOneWorkingSmokeDetectorInEachBedroomDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708SettingHasAnEmergencyEvacuationPlanWhichMeetsTheFollowingStardsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708IdentifiesTwoRoutesToEvacuateFromBedroomsUsedForCDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708IdentifiesTheLocationOfFireExtinguishersFireEvacuationEquipmentDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708DesignatesASafeMeetingPlaceOutsideTheSettingDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708IsMaintainedInTheSettingDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708ExitsFromTheSettingUnobstructedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708BedroomsUsedForCMustHaveAnExitOpensDirectlyToTheOutsideDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708LocksBarsOnWindowsInBedroomsUsedForCOnDoorsLeadingToTheOutsideHaveAQuickReleaseMechanismDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708SettingsProvidingCTo6OrMoreIndividualsPracticeDocumentAnEvacuationDrillAtLeastOnceEvery3MonthsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618708TheAddressForTheSettingIsPostedVisibleFromTheStreetDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709PoolsMaintainedNotStagnantClearEnoughToSeeThroughTheWaterToTheBottomSurfaceOfThePoolDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709IfWaterIsDeeperThan4FtAShepherdsCrookRingBuoyWithAttachedRopeAvailableInThePoolADateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709TheEnclosureFenceMeetsTheFollowingStardsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709TheExteriorSideOfTheFenceIsAtLeast5FtHighWithNoFootHholdsDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709IfChainLinkTheMeshMeasuresLessThan1HorizontallyDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709OpeningsMeasureLessThan4InchesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709GatesSelfClosingSelfLatchingOpenAwayFromThePoolDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709TheGateLatchIsAtLeast54AboveTheGroundDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709TheGateToTheEnclosureIsLockedDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709IfTheSettingConstitutesPartOfTheEnclosureTheFollowingStardsMetDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709TheFenceDoesNotInterfereWithSafeEgressFromTheSettingDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709ADoorFromTheSettingDoesNotOpenWithinThePoolEnclosureDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709AWindowInABedroomDesignatedForAnIndividualReceivingCIsNotPositionedWithinThePoolEnclosureDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="R618709OtherWindowsWithinThePoolEnclosurePermanentlySecuredToOpenNoMoreThan4InchesDateCorrected" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorPrintName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorDateSigned" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProviderPrintName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProviderSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProviderDateSigned" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

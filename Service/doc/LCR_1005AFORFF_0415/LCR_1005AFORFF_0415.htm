@@ -1,0 +1,687 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
+    <meta name="viewport" content="width=device-width" />
+    <title>LCR-1005AFORFF_0415</title>
+
+    <link href="jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+    <link href="_CustomStyles.css" rel="stylesheet" />
+    <link href="jQueryUI_Custom.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery-signature-pad.js"></script>   
+    <script type="text/javascript" src="_SiteCustom.js" ></script>
+    <script type="text/javascript" src="knockout-3.4.0.js" ></script>
+    <script type="text/javascript" src="knockout.mapping-latest.js" ></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <style  type="text/css">
+         input[type=radio]{
+            display:none;
+            }
+            label.forradio{
+            width:12px;
+            height:12px;
+            border-radius:2;
+            border: 1px #3a3a3a solid;
+            display:block;
+            line-height:22px;
+            text-align:center;
+            color:black;
+            font-size:40pt;
+            cursor:pointer;
+            background:white;
+            position:relative;
+            } 
+
+            input[type=radio]:checked + label:before{
+               opacity:1;
+            }
+
+            label.forradio:before{
+                position:absolute;
+                height:12px;
+                width:12px;
+                background-image:url('Radio_Checked.png');
+                /*background:#3a3a3a ;*/
+                content:'';
+                opacity:0;
+            }
+            
+        .RegPage
+        {
+            page-break-after: always;
+            height: 996px;
+            overflow-y: hidden;
+        }
+        .LastPage
+        {
+            height: 996px; 
+            overflow-y: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        function openSignaturePad(obj, objType) {
+            var xSize = 2;
+            var objDialogId = "objSinaturePad";
+            if (objType == 'Initials') { xSize = 3; objDialogId = "objInitialsPad"; }
+            var objControlId = $(obj).attr("id").toString().substring(3);
+            var w = $(obj).width() * xSize;
+            var h = $(obj).height() * xSize;
+            $('.objSignatureCanvas').attr('style', 'width: ' + w + 'px; height: ' + h + 'px; border: 1px solid Red;')
+            var originalContent;
+            $('#' + objDialogId).dialog({
+                resizable: false,
+                height: h + 125,
+                width: w + 40,
+                modal: true,
+                //Added below otherwise dialog was retaining previous element on cross button
+                open: function (event, ui) {
+                    originalContent = $("#objSinaturePad").html();
+                },
+                close: function (event, ui) {
+                    $("#objSinaturePad").html(originalContent);
+                }
+            });
+            var wrapper = document.getElementById(objDialogId),
+            clearButton = wrapper.querySelector('[data-action=clear]'),
+            saveButton = wrapper.querySelector('[data-action=save]'),
+            canvas = wrapper.querySelector('canvas'), signaturePad;
+            canvas.width = w;
+            canvas.height = h;
+            signaturePad = new SignaturePad(canvas);
+            signaturePad.clear();
+            signaturePad.penColor = 'Navy';
+            var clearSignature = function (event) {
+                signaturePad.clear();
+            };
+            var applySignature = function (event) {
+                var srcSignature = '';
+                if (!signaturePad.isEmpty()) {
+                    srcSignature = signaturePad.toDataURL();
+                }
+
+                $('#' + objControlId).val(srcSignature);
+                $('#img' + objControlId).attr('src', srcSignature);
+                if (objControlId == 'InspectorSignatureImage') {
+                    if (srcSignature != '') {
+                        $('#img' + objControlId).parent().removeClass('reqField');
+                        $('#InspectorDateSigned').datepicker('setDate', '+0');
+                        $('#tdInspectorDateSigned').removeClass('reqField');
+                        viewModel.InspectorDateSigned($('#InspectorDateSigned').val());
+                    }
+                    else {
+                        viewModel.InspectorDateSigned('');
+                        $('#tdInspectorDateSigned').addClass('reqField');
+                        $('#img' + objControlId).parent().addClass('reqField');
+                        passesValidation = false;
+                    }
+                }
+                if (objControlId == 'ProviderSignatureImage') {
+                    if (srcSignature != '' && srcSignature != undefined) {
+                        $("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']").parent().removeClass('reqField');
+                        $('#ProviderDateSigned').datepicker('setDate', '+0');
+                        viewModel.ProviderDateSigned($('#ProviderDateSigned').val());
+                        $('#tdProviderDateSigned').removeClass('reqField');
+                    }
+                    else {
+                        viewModel.ProviderDateSigned('');
+                        $('#tdProviderDateSigned').addClass('reqField');
+                        if ($('#cb10').is(':checked') || $('#cb11').is(':checked')) {
+                            $("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']").parent().removeClass('reqField');
+                        }
+                        else {
+                            $("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']").parent().addClass('reqField');
+                            passesValidation = false;
+                        }
+                    }
+                }
+                clearButton.removeEventListener('click', clearSignature);
+                saveButton.removeEventListener('click', applySignature);
+                LockingTheFormIfAnySignaturePresent(objControlId, srcSignature);
+                $('#' + objDialogId).dialog('close');
+            };
+            clearButton.addEventListener('click', clearSignature);
+            saveButton.addEventListener('click', applySignature);
+        }
+        var viewModel = null;
+        var myjsonstring = "";
+        var passesValidation = true;
+        function LockingTheFormIfAnySignaturePresent(objControlId, srcSignature) {
+            if (srcSignature != undefined && srcSignature != '') {
+                //Lock entire form except signatures
+                $(".formBody").find("input,button,textarea,select").prop("disabled", true);
+                $("#imgProviderSignatureImage").prop("disabled", false);
+                $("#imgInspectorSignatureImage").prop("disabled", false);
+
+            }
+            else {
+                //signature is not applied Unlock fields.
+                if (($("#imgProviderSignatureImage").attr('src') == '' || $("#imgProviderSignatureImage").attr('src') == undefined) &&
+                ($("#imgInspectorSignatureImage").attr('src') == '' || $("#imgInspectorSignatureImage").attr('src') == undefined))
+                    $(".formBody").find("input,button,textarea,select").prop("disabled", false);
+            }
+        }
+        //        function getFormattedDate(date) {
+        //            var year = date.getFullYear();
+        //            var month = (1 + date.getMonth()).toString();
+        //            month = month.length > 1 ? month : '0' + month;
+        //            var day = (1 + date.getDate()).toString();
+        //            day = day.length > 1 ? day : '0' + day;
+        //            return month + '/' + day + '/' + year;
+        //        }
+
+        $(document).ready(function () {
+            $('.DatePicker').datepicker({
+                changeMonth: true, changeYear: true
+            });
+            var jsonfilepath = getParameterByName("jsonpath");
+            $.getJSON(jsonfilepath, function (data) {
+                myjsonstring = JSON.stringify(data);
+            });
+
+            viewModel = ko.mapping.fromJSON(myjsonstring);
+            var jsondates = viewModel.InspectorDateSigned();
+
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.InspectorDateSigned('');
+            }
+            jsondates = viewModel.ProviderDateSigned();
+
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.ProviderDateSigned('');
+            }
+
+            var date = viewModel.DateOfInspection();
+            if (date == '0001-01-01T00:00:00' || date == 'NaN/NaN/NaN') {
+                viewModel.DateOfInspection('');
+            }
+            else {
+                if (date != '') {
+                    var res = date.substring(0, 1);
+                    if (res == 2) {
+                        viewModel.DateOfInspection(moment(date).format('MM/DD/YYYY'));
+                    }
+                }
+            }
+
+            var jsondates = viewModel.TimeOfInspection();
+            var dtt = moment(jsondates, "hh:mm").format('HH:mm');
+            if (jsondates == '0001-01-01T00:00:00' || (dtt == 'Invalid date')) {
+                viewModel.TimeOfInspection('');
+                $("#defaulttimeofinspection").val('');
+            }
+            else {
+                viewModel.TimeOfInspection(dtt);
+                $("#defaulttimeofinspection").val(dtt);
+            }
+
+            ko.applyBindings(viewModel);
+            formValidation();
+
+            if ((viewModel.ProviderSignatureImage() != undefined && viewModel.ProviderSignatureImage() != '') || (viewModel.InspectorSignatureImage() != undefined && viewModel.InspectorSignatureImage() != '')) {
+                //Signaures Present Lock the form
+                LockingTheFormIfAnySignaturePresent(null, 'present');
+            }
+
+            var allRadios = document.getElementsByName('RbProviderNotPresentProviderRefusedToSignn');
+            var booRadio;
+            var x = 0;
+            for (x = 0; x < allRadios.length; x++) {
+                allRadios[x].onclick = function () {
+                    if (booRadio == this) {
+                        viewModel.RbProviderNotPresentProviderRefusedToSign('');
+                        this.checked = false;
+                        booRadio = null;
+                    }
+                    else {
+                        booRadio = this;
+                    }
+                };
+            }
+        });
+
+        /* ko.bindingHandlers.timepicker = {
+        init: function (element, valueAccessor, allBindingsAccessor) {
+        //initialize timepicker with some optional options
+        var options = allBindingsAccessor().timepickerOptions || {},
+        input = $(element).timepicker(options);
+
+        //handle the field changing
+        ko.utils.registerEventHandler(element, "time-change", function (event, time) {
+        var observable = valueAccessor(),
+        current = ko.utils.unwrapObservable(observable),
+        instance = $(element).timepicker();
+
+        if (time === false) {
+        observable('');
+        } else if (current - time !== 0) {
+        observable(instance.format(time));
+        }
+        });
+
+        //handle disposal (if KO removes by the template binding)
+        ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
+        $(element).timepicker("destroy");
+        });
+        },
+
+        update: function (element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor()),
+        // calling timepicker() on an element already initialized will
+        // return a TimePicker object
+        instance = $(element).timepicker(),
+        time = $.fn.timepicker.parseTime(value);
+
+        if (time - instance.getTime() !== 0) {
+        instance.setTime(time);
+        }
+        }
+        };
+
+
+        Date.prototype.yyyymmdd = function () {
+        var yyyy = this.getFullYear().toString();
+        var mm = (this.getMonth() + 1).toString();
+        var dd = this.getDate().toString();
+        return [(mm[1] ? mm : "0" + mm[0]), (dd[1] ? dd : "0" + dd[0]), yyyy].join('/');
+        };
+
+        Date.prototype.HHMMSS = function () {
+        var HH = this.getHours().toString();
+        var MM = this.getMinutes().toString();
+        var SS = this.getSeconds().toString();
+        return [(HH[1] ? HH : "0" + HH[0]), (MM[1] ? MM : "0" + MM[0]), (SS[1] ? SS : "0" + SS[0])].join(':');
+        };*/
+
+        function formValidation() {
+
+            if ($('input[name="inspectionPurpose"]:checked').length <= 0) {
+                $("input[type='checkbox'][name='inspectionPurpose']").addClass('reqField');
+                $("#othertd").removeClass('reqField');
+                passesValidation = false;
+            }
+            else {
+                $("input[type='checkbox'][name='inspectionPurpose']").removeClass('reqField');
+                //if (($("#cb5").is(':checked'))) {
+                //$("#idInspectionPurposeOther").prop("disabled", false);
+                //}
+                //else {
+                //$("#idInspectionPurposeOther").prop("disabled", true);
+                //$("#idInspectionPurposeOther").val('');
+                //}
+            }
+
+            $('.req').each(function () {
+                var id = $(this).attr("id");
+                if ($(this).val().length == 0) {
+                    if (id == "InspectorDateSigned" || id == "ProviderDateSigned") {
+                        $('#' + 'td' + id).addClass('reqField'); passesValidation = false;
+                    }
+                    else {
+                        if (id != "imgInspectorSignatureImage" && id != "imgProviderSignatureImage") {
+                            $('.' + id).addClass('reqField'); passesValidation = false;
+                        }
+
+                    }
+                }
+                else {
+                    $('.' + id).removeClass('reqField');
+                }
+                if (id == "imgInspectorSignatureImage") {
+                    if ($("#" + id).attr('src') == undefined || $("#" + id).attr('src') == '') {
+                        $('#divInspectorSignatureImage').addClass('reqField');
+                        passesValidation = false;
+                    }
+                    else {
+                        $('#divInspectorSignatureImage').removeClass('reqField');
+                    }
+                }
+
+
+            });
+
+
+            $('.Representative').removeClass('reqField');
+            if ($("#imgProviderSignatureImage").attr('src') == undefined || $("#imgProviderSignatureImage").attr('src') == '') {
+                if ($("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']:checked").length) {
+                    $("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']").parent().removeClass('reqField');
+                }
+                else {
+                    $("input[type='radio'][name='RbProviderNotPresentProviderRefusedToSignn']").parent().addClass('reqField');
+                    passesValidation = false;
+                }
+            }
+            SignatureValidation();
+
+            //-------------------------------------------------------------------------------------------------------------------->
+            if (passesValidation) { $('#RecordStatus').val('Completed') } else { $('#RecordStatus').val('Pending') }
+        }
+
+        function SignatureValidation() {
+            if ($('#ProviderDateSigned').val().length == 0) {
+                $('#tdProviderDateSigned').addClass('reqField');
+                passesValidation = false;
+            }
+            else {
+                $('#tdProviderDateSigned').removeClass('reqField');
+            }
+
+            if ($('#InspectorDateSigned').val().length == 0) {
+
+                $('#tdInspectorDateSigned').addClass('reqField');
+                passesValidation = false;
+            }
+            else {
+                $('#tdInspectorDateSigned').removeClass('reqField');
+            }
+        }
+
+        function submitCustomForm() {
+            //debugger;
+
+            viewModel.ProviderSignatureImage($('#imgProviderSignatureImage').attr('src'));
+            viewModel.InspectorSignatureImage($('#imgInspectorSignatureImage').attr('src'));
+            var dt = moment($("#TimeOfAssessment").val(), "hh:mm").format('HH:mm');
+
+            if (dt == 'Invalid date') {
+                //alert('Invalid Date by Moment');
+                //assign default date
+                //alert($("#defaulttimeofinspection").val());
+                viewModel.TimeOfInspection($("#defaulttimeofinspection").val());
+            }
+            else {
+                //Valid Date
+                //alert('Valid Date by Moment');
+                //alert(dt);
+                $("#defaulttimeofinspection").val(dt);
+                viewModel.TimeOfInspection(dt);
+                //alert($("#defaulttimeofinspection").val());
+            }
+
+            var unmapped = ko.mapping.toJSON(viewModel);
+            $('#jsonString').html(unmapped);
+            window.location = window.location;
+            //if (passesValidation) {
+            alert("Saved Successfully!");
+            //}
+            //            else {
+            //                alert("Entered fields saved");
+            //            }
+        }
+
+    </script>
+</head>
+<body>
+    <table class="w100p dontPrint" style="page-break-after: always;">
+        <tr>
+<!--            <td>
+                <input type="button" value="Print" onclick="Print();" />
+            </td>-->
+            <td style="text-align: right;">
+                <input type="button" value="Save" onclick="submitCustomForm()" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+    </table>
+    <form action="/Forms/LCR_1005AFORFF_0415" method="post">
+    <div class="formBody" onclick="passesValidation = true; formValidation();" onchange="passesValidation = true; formValidation();" id="mycontentdivtest">
+        <input id="DocId" name="DocId" type="hidden" value="" />
+        <input id="DocChecksum" name="DocChecksum" type="hidden" value="" />
+        <input id="DocTitle" name="DocTitle" type="hidden" value="" />
+        <input id="DocTypeName" name="DocTypeName" type="hidden" value="" />
+        <input id="solutionVersion" name="solutionVersion" type="hidden" value="" />
+        <input data-val="true" data-val-date="The field DateCompleted must be a date." id="DateCompleted"
+            name="DateCompleted" type="hidden" value="" />
+        <input id="DocStatus" name="DocStatus" type="hidden" value="" />
+		<input type="hidden" id="defaulttimeofinspection" value=""/>
+        <div class="RegPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_1.svg">
+            </iframe>
+            <div class="pageContent">
+                <div class="drift" style="padding: 101px 0 0 70px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 350px;">
+                                <div class="VendorName fleft">
+                                    <input style="width: 282px;" class="req" id="VendorName" name="VendorName" onkeyup="objMaxWidth(this)"
+                                        type="text" value="" data-bind="value : VendorName" readonly />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="OfficeName fleft">
+                                    <input style="width: 312px;" class="req" id="OfficeName" name="OfficeName" onkeyup="objMaxWidth(this)"
+                                        type="text" value="" data-bind="value : OfficeName" readonly/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 13px 0 0 195px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 370px;">
+                                <div class="AddressLineOne fleft">
+                                    <input style="width: 285px;" id="AddressLineOne" name="AddressLineOne"
+                                        onkeyup="objMaxWidth(this)" type="text" value="" data-bind="value : AddressLineOne" readonly/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PrimaryPhone fleft">
+                                    <input style="width: 165px;" id="PrimaryPhone" name="PrimaryPhone" onkeyup="objMaxWidth(this)"
+                                        type="text" value="" data-bind="value : PrimaryPhone" readonly/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 12px 0 0 136px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 357px;">
+                                <div class="DateOfAssessment fleft">
+                                    <input style="width: 225px;" class="DatePicker req" data-val="true" data-val-date="The field DateOfAssessment must be a date."
+                                        id="DateOfAssessment" name="DateOfAssessment" onkeyup="objMaxWidth(this)" type="text"
+                                        value="" data-bind="value : DateOfInspection" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="TimeOfAssessment fleft">
+                                    <input style="width: 175px;" class="timepicker req" id="TimeOfAssessment" name="TimeOfAssessment"
+                                        type="text" value="" data-bind="value : TimeOfInspection"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 12px 0 0 155px; height: 68px;">
+                    <div class="InspectorName fleft">
+                        <input style="width: 570px;" class="req" id="InspectorName" name="InspectorName"
+                            onkeyup="objMaxWidth(this)" type="text" value="" data-bind="value : InspectorName"/>
+                    </div>
+                </div>
+                <div class="drift" style="padding-left: 45px; top: -1px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td >
+                                <input type="checkbox" id= "cb1" name="inspectionPurpose" class ="req" value="Licensing requirement for a Developmental Home" data-bind="checked : CbInspectionPurposeLicensingRequirement"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding-left: 45px; top: -4px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td >
+                                <input type="checkbox" id= "cb2" name="inspectionPurpose" class ="req" value="Life-Safety requirements for the OLCR" data-bind="checked : CbInspectionPurposeLifeSafetyRequirements"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding-left: 45px; top: -8px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td >
+                                <input type="checkbox" id= "cb3" name="inspectionPurpose" class ="req" value="Audit requirements for Home & Community Based Services" data-bind="checked : CbInspectionPurposeAuditRequirements"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding-left: 45px; top: -10px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td >
+                                <input type="checkbox" id= "cb4"  name="inspectionPurpose" class ="req" value="To conduct an inquiry or follow-up on a complaint"
+                                    data-bind="checked : CbInspectionPurposeConductAnInquiry"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding-left: 45px; top: -14px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 65px;">
+                                <div class="fleft">
+                                    <input type="checkbox" id= "cb5" name="inspectionPurpose" class ="req" value="Other" data-bind="checked : CbInspectionPurposeOther"/>
+                                </div>
+                            </td>
+                            <td id="othertd" class="clsInspectionPurposeOther">
+                                <input style="width: 600px;" id="idInspectionPurposeOther"  type="text" value="" data-bind="value : InspectionPurposeOtherText" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 155px 0 0 25px; height: 155px;">
+                    <div class="drift" style="height: 55px;">
+                        <table cellpadding="0" cellspacing="0" class="Supervisors_0__Name">
+                            <tr>
+                                <td style="width: 555px;">
+                                    <input title="Enter Address" style="width: 500px;" class="req" id="Supervisors_0__Name" name="Supervisors[0].Name"
+                                        type="text" value="" data-bind="value : QuestionsSuperVisorName"/>
+                                </td>
+                                <td>
+                                    <input title="Enter Phone Number" style="width: 150px;" id="Supervisors_0__Phone" name="Supervisors[0].Phone"
+                                        type="text" value="" data-bind="value : QuestionsSuperVisorPhone"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="drift" style="height: 55px;">
+                        <table cellpadding="0" cellspacing="0" class="Supervisors_1__Name">
+                            <tr>
+                                <td style="width: 555px;">
+                                    <input title="Enter Address" style="width: 500px;" class="req" id="Supervisors_1__Name" name="Supervisors[1].Name"
+                                        type="text" value="" data-bind="value : AdminReviewSuperVisorName"/>
+                                </td>
+                                <td>
+                                    <input title="Enter Phone Number" style="width: 150px;" id="Supervisors_1__Phone" name="Supervisors[1].Phone"
+                                        type="text" value="" data-bind="value : AdminReviewSuperVisorPhone"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="drift" style="padding: 2px 0 0 23px; height: 100px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr style="vertical-align: top;">
+                            <td style="width: 125px; padding-top: 20px;">
+<!--                                <input class="cbRepresentative" id="Representative" name="Representative" type="hidden"
+                                    value="" />-->
+                                <div class="drift" style="padding-top:3px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="Representative" style="width:40px;">
+                                                <input type="radio" name="RbProviderNotPresentProviderRefusedToSignn" id="cb10"  value="Was not present" data-bind="checked : RbProviderNotPresentProviderRefusedToSign"/>
+                                                <label for="cb10" class="forradio" style="margin-bottom:3px;margin-top:3px"></label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -1px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="Representative" style="width:40px;">
+                                                <input type="radio" name="RbProviderNotPresentProviderRefusedToSignn" id="cb11" value="Refused to sign this form" data-bind="checked : RbProviderNotPresentProviderRefusedToSign"/>
+                                                <label for="cb11" class="forradio"></label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="drift" style="height: 60px; padding-left: 117px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="width: 335px;">
+                                                <div id="divProviderSignatureImage" onclick="openSignaturePad(this)" class="reqSignature"
+                                                    style="position: absolute; top: -30px; width: 275px; height: 65px;">
+                                                    <img id="imgProviderSignatureImage" width="100%" height="100%" alt="" data-bind="attr :{ src : ProviderSignatureImage}"/>
+                                                </div>
+                                            </td>
+                                            <td id="tdProviderDateSigned">
+                                                <input class="DatePicker req" style="width: 130px;" id="ProviderDateSigned"  type="text" value=""  data-bind="value : ProviderDateSigned"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 60px; padding-left: 10px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="width: 442px;">
+                                                <div id="divInspectorSignatureImage" onclick="openSignaturePad(this)" class="reqSignature"
+                                                    style="position: absolute; top: -20px; width: 375px; height: 65px;">
+                                                    <img id="imgInspectorSignatureImage" class="req" width="100%" height="100%" alt="" data-bind="attr :{ src : InspectorSignatureImage}"/>
+                                                </div>
+                                            </td>
+                                            <td id="tdInspectorDateSigned">
+                                                <input class="DatePicker req" style="width: 130px;" id="InspectorDateSigned" type="text" value="" data-bind="value : InspectorDateSigned" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="LastPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_2.svg">
+            </iframe>
+        </div>
+    </div>
+    </form>
+    <!--//-------------------------------------------------------------------------------------------------------------------->
+    <div class="dontPrint" style="position: fixed; top: 100%;">
+        <div id="jsonString" />
+        <div id="objSinaturePad" title="Sign Here..." style="text-align: center; overflow-y: hidden;">
+            <div class="objSignatureCanvas">
+                <canvas>
+                </canvas>
+                <hr style="position: relative; margin-top: -40px; color: Silver;" />
+            </div>
+            <br />
+            <button type="button" data-action="clear">
+                Clear</button>
+            <button type="button" data-action="save">
+                Apply Signature</button>
+        </div>
+        <div id="objCanvas" style="padding: 2px; overflow-y: hidden;">
+            <div id="objDescription">
+            </div>
+            <hr />
+            <label id="objTextBox">
+            </label>
+            <div id="objTextArea">
+            </div>
+        </div>
+    </div>
+    <!--//-------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

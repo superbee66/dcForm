@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dCForm.Core", "Core\dCForm.Core.csproj", "{C9065636-B397-4FB3-B9DE-8FE5A754210A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dCForm.Client", "Client\dCForm.Client.csproj", "{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Service", "Service\", "{584D7878-3828-4BC7-BFDB-FD30896305EE}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = ""
+		SccAuxPath = ""
+		SccLocalPath = ""
+		SccProvider = ""
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_2544"
+		Debug.AspNetCompiler.PhysicalPath = "Service\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2544\"
+		Debug.AspNetCompiler.Updateable = "false"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_2544"
+		Release.AspNetCompiler.PhysicalPath = "Service\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2544\"
+		Release.AspNetCompiler.Updateable = "false"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2544"
+		SlnRelativePath = "Service\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Debug|x86.Build.0 = Debug|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Release|x86.ActiveCfg = Release|Any CPU
+		{C9065636-B397-4FB3-B9DE-8FE5A754210A}.Release|x86.Build.0 = Release|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}.Release|x86.Build.0 = Release|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Release|x86.ActiveCfg = Debug|Any CPU
+		{584D7878-3828-4BC7-BFDB-FD30896305EE}.Release|x86.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD18F24B-09F5-4B50-B69B-31B6C3B0FF18}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = InfoPath.vsmdi
+	EndGlobalSection
+EndGlobal

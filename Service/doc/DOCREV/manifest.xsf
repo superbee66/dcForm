@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is automatically created and modified by Microsoft InfoPath.
+Changes made to the file outside of InfoPath might be lost if the form template is modified in InfoPath.
+-->
+<xsf:xDocumentClass trustSetting="automatic" trustLevel="restricted" solutionFormatVersion="3.0.0.0" solutionVersion="1.0.0.7" productVersion="14.0.0" name="urn:schemas-microsoft-com:office:infopath:DOCREV:-myXSD-2016-01-16T03-31-50" xmlns:xsf="http://schemas.microsoft.com/office/infopath/2003/solutionDefinition" xmlns:xsf2="http://schemas.microsoft.com/office/infopath/2006/solutionDefinition/extensions" xmlns:xsf3="http://schemas.microsoft.com/office/infopath/2009/solutionDefinition/extensions" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xdUtil="http://schemas.microsoft.com/office/infopath/2003/xslt/Util" xmlns:xdXDocument="http://schemas.microsoft.com/office/infopath/2003/xslt/xDocument" xmlns:xdMath="http://schemas.microsoft.com/office/infopath/2003/xslt/Math" xmlns:xdDate="http://schemas.microsoft.com/office/infopath/2003/xslt/Date" xmlns:xdExtension="http://schemas.microsoft.com/office/infopath/2003/xslt/extension" xmlns:xdEnvironment="http://schemas.microsoft.com/office/infopath/2006/xslt/environment" xmlns:xdUser="http://schemas.microsoft.com/office/infopath/2006/xslt/User" xmlns:xdServerInfo="http://schemas.microsoft.com/office/infopath/2009/xslt/ServerInfo" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50">
+	<xsf:package>
+		<xsf:files>
+			<xsf:file name="myschema.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50"></xsf:property>
+					<xsf:property name="editability" type="string" value="full"></xsf:property>
+					<xsf:property name="rootElement" type="string" value="DOCREV"></xsf:property>
+					<xsf:property name="useOnDemandAlgorithm" type="string" value="yes"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="template.xml"></xsf:file>
+			<xsf:file name="sampledata.xml">
+				<xsf:fileProperties>
+					<xsf:property name="fileType" type="string" value="sampleData"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="view1.xsl">
+				<xsf:fileProperties>
+					<xsf:property name="lang" type="string" value="1033"></xsf:property>
+					<xsf:property name="componentId" type="string" value="6"></xsf:property>
+					<xsf:property name="xmlToEditName" type="string" value="4"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+		</xsf:files>
+	</xsf:package>
+	<xsf:importParameters enabled="yes"></xsf:importParameters>
+	<xsf:extensions>
+		<xsf:extension name="SolutionDefinitionExtensions">
+			<xsf2:solutionDefinition runtimeCompatibility="client" description="In the case of InfoPath documents, copies of every template &quot;solutionVersion&quot; ever seen" allowClientOnlyCode="no">
+				<xsf2:offline openIfQueryFails="yes" cacheQueries="yes"></xsf2:offline>
+				<xsf2:autoUpdatePrompt showPrompt="yes"></xsf2:autoUpdatePrompt>
+			</xsf2:solutionDefinition>
+		</xsf:extension>
+	</xsf:extensions>
+	<xsf:views default="View 1">
+		<xsf:view name="View 1" caption="View 1">
+			<xsf:editing>
+				<xsf:xmlToEdit name="DocTypeFiles_2" item="/my:DOCREV/my:TargetDocTypeFiles">
+					<xsf:editWith component="xFileAttachment"></xsf:editWith>
+				</xsf:xmlToEdit>
+				<xsf:xmlToEdit name="TargetDocTypeDotNetAssem_3" item="/my:DOCREV/my:TargetDocTypeDotNetAssembly">
+					<xsf:editWith allowedFileTypes="dll" component="xFileAttachment"></xsf:editWith>
+				</xsf:xmlToEdit>
+			</xsf:editing>
+			<xsf:menuArea name="msoStructuralEditingContextMenu">
+				<xsf:button action="xFileAttachment::attach" xmlToEdit="DocTypeFiles_2" caption="&amp;Attach..." showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::attach" xmlToEdit="TargetDocTypeDotNetAssem_3" caption="&amp;Attach..." showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::open" xmlToEdit="DocTypeFiles_2" caption="&amp;Open" showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::open" xmlToEdit="TargetDocTypeDotNetAssem_3" caption="&amp;Open" showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::saveAs" xmlToEdit="DocTypeFiles_2" caption="&amp;Save As..." showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::saveAs" xmlToEdit="TargetDocTypeDotNetAssem_3" caption="&amp;Save As..." showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::remove" xmlToEdit="DocTypeFiles_2" caption="Remov&amp;e" showIf="immediate"></xsf:button>
+				<xsf:button action="xFileAttachment::remove" xmlToEdit="TargetDocTypeDotNetAssem_3" caption="Remov&amp;e" showIf="immediate"></xsf:button>
+			</xsf:menuArea>
+			<xsf:mainpane transform="view1.xsl"></xsf:mainpane>
+		</xsf:view>
+	</xsf:views>
+	<xsf:applicationParameters application="InfoPath Design Mode">
+		<xsf:solutionProperties lastOpenView="view1.xsl" fullyEditableNamespace="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50" lastVersionNeedingTransform="1.0.0.6"></xsf:solutionProperties>
+	</xsf:applicationParameters>
+	<xsf:documentSchemas>
+		<xsf:documentSchema rootSchema="yes" location="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50 myschema.xsd"></xsf:documentSchema>
+	</xsf:documentSchemas>
+	<xsf:fileNew>
+		<xsf:initialXmlDocument caption="DOCREV" href="template.xml">
+			<xsf:customCategory name="IPB"></xsf:customCategory>
+		</xsf:initialXmlDocument>
+	</xsf:fileNew>
+</xsf:xDocumentClass>

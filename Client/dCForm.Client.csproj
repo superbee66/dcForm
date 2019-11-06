@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dCForm.Client</RootNamespace>
+    <AssemblyName>dCForm.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DocXmlParser.cs" />
+    <Compile Include="ClientBaseDocController.cs" />
+    <Compile Include="DocCmd.cs" />
+    <Compile Include="DocTypeInfo.cs" />
+    <Compile Include="IDocIdentifiers.cs" />
+    <Compile Include="IDocModel.cs" />
+    <Compile Include="Parm.cs" />
+    <Compile Include="SignatureVerifier.cs" />
+    <Compile Include="Util\CacheMan.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\CssClassify.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Dynamic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\FileSystem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\MemoryStreamExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\MethodInfoExtensions.cs" />
+    <Compile Include="Util\Null.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Patterns.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\PropertyDefaultValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\RequestPaths.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Serialize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\StreamExtensions.cs" />
+    <Compile Include="Util\StringInject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\StringTransform.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\ZipStorer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IDocLogistics.cs" />
+    <Compile Include="IDocController.cs" />
+    <Compile Include="LightDoc.cs" />
+    <Compile Include="DCF_Relay\DCF_Relay.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WebControls\AjaxHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\ApprovalEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\ApprovalEventHandler.cs" />
+    <Compile Include="WebControls\CheckColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\CheckItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\DragDropFileUpload.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\images\WebResources.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\InfoPathGrid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\InfoPathPanel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\js\ScriptManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WebControls\SearchTextBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DCF_Relay\web.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebControls\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="WebControls\js\reserve.InfoPathPanel.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\animated-overlay.gif" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <EmbeddedResource Include="WebControls\css\ui-lightness\jquery-ui-1.10.4.custom.min.css" />
+    <EmbeddedResource Include="WebControls\images\progressbar.gif" />
+    <EmbeddedResource Include="WebControls\images\spinner.gif" />
+    <EmbeddedResource Include="WebControls\js\DragDropFileUpload.js" />
+    <EmbeddedResource Include="WebControls\js\jquery-1.10.2.js" />
+    <EmbeddedResource Include="WebControls\js\jquery-fileupload.js" />
+    <EmbeddedResource Include="WebControls\js\jquery-iframe-transport.js" />
+    <EmbeddedResource Include="WebControls\js\jquery-ui-1.10.4.custom.js" />
+    <EmbeddedResource Include="WebControls\js\jquery.jqprint-0.3.js" />
+    <EmbeddedResource Include="WebControls\js\jquery.watermark.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

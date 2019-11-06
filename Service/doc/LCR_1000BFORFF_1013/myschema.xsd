@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.progablab.com/LCR_1000BFORFF_1013" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LCR_1000BFORFF_1013" nillable="true" xmlns:q1="http://schemas.progablab.com/LCR_1000BFORFF_1013" type="q1:LCR_1000BFORFF_1013" />
+  <xsd:complexType name="LCR_1000BFORFF_1013">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="AgencyName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AgencyRepName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="AuditDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1Name" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1ServiceProvided" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbTransportingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1AutoInsuranceExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1RegistrationExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbProvidingServicesInHomeYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1RbProvidingServicesInHomeIfYesCurrInspectionDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbProvidingServicesInHomeHouseHoldMembersYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1DateHire" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1CPRExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1Article9ExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbAppResumeOnFileYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1FirstAidExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1CitExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1CbReferencesOnFile1" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1CbReferencesOnFile2" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1CbReferencesOnFile3" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1FingerPrintCardExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbClientOrientationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1RbEducationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1FingerPrintsTaken" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1DateOfBirth" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp1CriminalSelfDisclosureExpDate" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp1DriverLicenseExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2Name" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2ServiceProvided" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbTransportingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2AutoInsuranceExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2RegistrationExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbProvidingServicesInHomeYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2RbProvidingServicesInHomeIfYesCurrInspectionDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbProvidingServicesInHomeHouseHoldMembersYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2DateHire" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CPRExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2Article9ExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbAppResumeOnFileYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2FirstAidExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CitExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CbReferencesOnFile1" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CbReferencesOnFile2" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CbReferencesOnFile3" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2FingerPrintCardExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbClientOrientationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp2RbEducationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2FingerPrintsTaken" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2DateOfBirth" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2CriminalSelfDisclosureExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp2DriverLicenseExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3Name" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3ServiceProvided" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbTransportingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3AutoInsuranceExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3RegistrationExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbProvidingServicesInHomeYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3RbProvidingServicesInHomeIfYesCurrInspectionDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbProvidingServicesInHomeHouseHoldMembersYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3DateHire" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CPRExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3Article9ExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbAppResumeOnFileYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3FirstAidExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CitExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CbReferencesOnFile1" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CbReferencesOnFile2" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CbReferencesOnFile3" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3FingerPrintCardExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbClientOrientationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="Emp3RbEducationVerifiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3FingerPrintsTaken" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3DateOfBirth" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3CriminalSelfDisclosureExpDate" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Emp3DriverLicenseExpDate" nillable="true" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

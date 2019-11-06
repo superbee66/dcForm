@@ -1,0 +1,946 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>LCR-1000BFORFF_1013</title>
+    <link href="jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+    <link href="_CustomStyles.css" rel="stylesheet" />
+    <link href="jQueryUI_Custom.css" rel="stylesheet" />
+    <link href="jquery.datetimepicker.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery-signature-pad.js"></script>
+    <script type="text/javascript" src="_SiteCustom.js" ></script>
+    <script type="text/javascript" src="knockout-3.4.0.js" ></script>
+    <script type="text/javascript" src="knockout.mapping-latest.js" ></script>
+    <script type="text/javascript" src="jquery.datetimepicker.full.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+
+
+    <style type="text/css">
+            input[type=radio]{
+            display:none;
+            }
+
+            label.forradio{
+            width:12px;
+            height:12px;
+            border-radius:2;
+            border: 1px #3a3a3a solid;
+            display:block;
+            line-height:22px;
+            text-align:center;
+            color:black;
+            font-size:40pt;
+            cursor:pointer;
+            background:white;
+            position:relative;
+            } 
+
+            input[type=radio]:checked + label:before{
+               opacity:1;
+            }
+
+            label.forradio:before{
+                position:absolute;
+                height:12px;
+                width:12px;
+                background-image:url('Radio_Checked.png');
+                /*background:#3a3a3a ;*/
+                content:'';
+                opacity:0;
+            }
+
+            .RegPage
+            {
+                page-break-after: always;
+                height: 996px;
+                overflow-y: hidden;
+            }
+
+            .LastPage
+            {
+                height: 996px;
+                overflow-y: hidden;
+            }
+    </style>
+    <script type="text/javascript">
+
+        var viewModel = null;
+        var passesValidation = true;
+        var myjsonstring = "";
+        $(document).ready(function () {
+            $('.DatePicker').datepicker({
+                changeMonth: true, changeYear: true
+            });
+            //$('.timepicker').timepicker();
+            $('.DateTimePicker').datetimepicker({
+                format: 'Y/m/d h:i a',
+                onClose: function () {
+                }
+            });
+
+            var jsonfilepath = getParameterByName("jsonpath");
+            $.getJSON(jsonfilepath, function (data) {
+                myjsonstring = JSON.stringify(data);
+            });
+
+            viewModel = ko.mapping.fromJSON(myjsonstring);
+            var jsondates = viewModel.AuditDate();
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.AuditDate('');
+            }
+            else {
+                viewModel.AuditDate(moment(jsondates).format('YYYY/MM/DD h:mm a')); 
+            }
+            //jsondates = jsondates.replace(/T/g, " ");
+            //viewModel.AuditDate(jsondates);
+
+            ko.applyBindings(viewModel);
+            //$('img').each(function () { var src = $(this).attr('src'); if (src === undefined) { $(this).attr('src', 'Spacer.gif'); } });
+
+            $(".chb").change(function () {
+                $(".chb").prop('checked', false);
+                $(this).prop('checked', true);
+            });
+            formValidation();
+
+        });
+
+        function formValidation() {
+            $('.req').each(function () {
+                var id = $(this).attr("id");
+                if ($(this).val().length == 0 && id != undefined) {
+                    $('#' + id).parent().addClass('reqField');
+                    passesValidation = false;
+                } else {
+                    $('#' + id).parent().removeClass('reqField');
+                }
+            });
+        }
+
+        function submitCustomForm() {
+            var unmapped = ko.mapping.toJSON(viewModel);
+            $('#jsonString').html(unmapped);
+            window.location = window.location;
+            //if (passesValidation) {
+            alert("Saved Successfully!");
+            //}
+            //            else {
+            //                alert("Entered fields saved");
+            //            }
+        }
+
+    </script>
+</head>
+<body>
+    <form method="post">
+    <div class="formBody" onclick="passesValidation = true; formValidation();" onchange="passesValidation = true; formValidation();" >
+        <table class="w100p dontPrint" style="page-break-after: always;">
+        <tr>
+            <td style="text-align: right;">
+                <input type="button" value="Save" onclick="submitCustomForm()" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+    </table>
+        <input id="DocId" name="DocId" type="hidden" value="" />
+        <input id="DocChecksum" name="DocChecksum" type="hidden" value="" />
+        <input id="DocTitle" name="DocTitle" type="hidden" value="" />
+        <input id="DocTypeName" name="DocTypeName" type="hidden" value="" />
+        <input id="solutionVersion" name="solutionVersion" type="hidden" value="" />
+        <input data-val="true" data-val-date="The field DateCompleted must be a date." id="DateCompleted"
+            name="DateCompleted" type="hidden" value="" />
+        <input id="DocStatus" name="DocStatus" type="hidden" value="" />
+        <div class="RegPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_1.svg">
+            </iframe>
+            <div class="pageContent">
+                <div class="drift" style="padding: 84px 0 0 24px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div class="OfficeName fleft"  style="width: 236px;">
+                                    <input class="req" style="width: 234px;" id="OfficeName" name="OfficeName"
+                                        type="text" value="" data-bind="value : AgencyName" readonly/></div>
+                            </td>
+                            <td style="width: 315px;">
+                                <div class="Representative fleft ">
+                                    <input class="req" style="width: 305px;" id="Representative" name="Representative"
+                                        type="text" value="" data-bind="value : AgencyRepName"/></div>
+                            </td>
+                            <td>
+                                <div class="DateOfAssessment fleft" style="width: 155px;">
+                                    <input style="width: 150px;" class="req DateTimePicker" data-val="true" data-val-date="The field DateOfAssessment must be a date."
+                                        id="DateOfAssessment" name="DateOfAssessment" type="text" value="" data-bind="value : AuditDate" ></input> </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 28px 0  0 24px; height: 875px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 357px;">
+                                <input style="width: 353px;" id="Employees_0__Name" name="Employees[0].Name"
+                                    type="text" value="" data-bind="value : Emp1Name"/>
+                            </td>
+                            <td>
+                                <input style="width: 352px;" id="Employees_0__ServiceProvided" name="Employees[0].ServiceProvided"
+                                    type="text" value="" data-bind="value : Emp1ServiceProvided"/>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 11px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -2px;">
+                                    <tr style="vertical-align: top;">
+                                        <td style="width: 44px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd1" name="Emp1RbTransporting" data-bind="checked : Emp1RbTransportingYesNo"/>
+                                                <label for="rd1" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="No" id="rd2" name="Emp1RbTransporting" data-bind="checked : Emp1RbTransportingYesNo"/>
+                                                <label for="rd2" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="padding-left: 170px;">
+                                            <div class="fleft" style="top: -2px;">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_0__InsuranceExpDate" 
+                                                type="text" value="" data-bind="value : Emp1AutoInsuranceExpDate"/>
+                                            </div>
+                                            <div class="fleft">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_0__RegistrationExpDate"
+                                                    type="text" value="" data-bind="value : Emp1RegistrationExpDate"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="padding: 9px 0 0 2px;">
+                                <div class="drift" style="">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="top:-3px;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd3" name="Emp1RbProvidingServicesInHome" data-bind="checked : Emp1RbProvidingServicesInHomeYesNo"/>
+                                                <label for="rd3" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd4" name="Emp1RbProvidingServicesInHome" data-bind="checked : Emp1RbProvidingServicesInHomeYesNo"/>
+                                                <label for="rd4" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="padding-left: 180px;">
+                                                <div class="fleft" style="top: -2px;">
+                                                    <input style="width: 85px;" class="DatePicker" id="Employees_0__InspectionDate"
+                                                        type="text" value="" data-bind="value : Emp1RbProvidingServicesInHomeIfYesCurrInspectionDate"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -5px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd5" name="Emp1RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp1RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                                <label for="rd5" class="forradio"></label>                                    
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd6" name="Emp1RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp1RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                                <label for="rd6" class="forradio"></label>                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -4px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd7" name="Emp1RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp1RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                                <label for="rd7" class="forradio"></label>                                    
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd8" name="Emp1RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp1RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                                <label for="rd8" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" style="margin-top:8px;">
+                        <tr>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__DateHire" 
+                                        type="text" value="" data-bind="value : Emp1DateHire" /></div>
+                            </td>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__CPRExpDate"
+                                        type="text" value="" data-bind="value : Emp1CPRExpDate" /></div>
+                            </td>
+                            <td>
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__Article9ExpDate"
+                                        type="text" value="" data-bind="value : Emp1Article9ExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 17px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -1px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd9" name="Emp1RbAppResumeOnFile" data-bind="checked : Emp1RbAppResumeOnFileYesNo"/>
+                                                <label for="rd9" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="Employees_0__AppResumeOnFile fleft">
+                                               <input type="radio" value="No" id="rd10" name="Emp1RbAppResumeOnFile" data-bind="checked : Emp1RbAppResumeOnFileYesNo"/>
+                                               <label for="rd10" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__FirstAidExpDate"
+                                        type="text" value="" data-bind="value : Emp1FirstAidExpDate"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__CitExpDate"
+                                        type="text" value="" data-bind="value : Emp1CitExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 14px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -4px;margin-top:1px;">
+                                <tr>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                            <input type="checkbox" value="1"  data-bind="checked : Emp1CbReferencesOnFile1"/>
+                                            </div>
+                                        </td>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                                <input type="checkbox" value="2" data-bind="checked : Emp1CbReferencesOnFile2"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                                <input type="checkbox" value="3" data-bind="checked : Emp1CbReferencesOnFile3"/>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__FingerPrintCardExpDate"
+                                        type="text" value="" data-bind="value : Emp1FingerPrintCardExpDate"/></div>
+                            </td>
+                            <td style="padding: 17px 0 0 1px;">
+                                <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft" style="margin-left:2px;">
+                                             <input type="radio" value="Yes" id="rd11" name="Emp1RbClientOrientationVerified" data-bind="checked : Emp1RbClientOrientationVerifiedYesNo"/>
+                                             <label for="rd11" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;margin-left:1px;">
+                                            <div class="fleft">
+                                             <input type="radio" value="No" id="rd12" name="Emp1RbClientOrientationVerified" data-bind="checked : Emp1RbClientOrientationVerifiedYesNo"/>
+                                             <label for="rd12" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 14px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -2px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft" style="margin-left:2px;">
+                                             <input type="radio" value="Yes" id="rd13" name="Emp1RbEducationVerified" data-bind="checked : Emp1RbEducationVerifiedYesNo"/>
+                                             <label for="rd13" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                             <input type="radio" value="No" id="rd14" name="Emp1RbEducationVerified" data-bind="checked : Emp1RbEducationVerifiedYesNo"/>
+                                             <label for="rd14" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__FingerPrintsTaken"
+                                        type="text" value="" data-bind="value : Emp1FingerPrintsTaken"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__DateOfBirth"
+                                        name="Employees[0].DateOfBirth" type="text" value="" data-bind="value : Emp1DateOfBirth"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__CriminalSelfDisclosureExpDate"
+                                        name="Employees[0].CriminalSelfDisclosureExpDate" type="text" value="" data-bind="value : Emp1CriminalSelfDisclosureExpDate"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px; height: 48px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_0__DriverLicenseExpDate"
+                                        name="Employees[0].DriverLicenseExpDate" type="text" value="" data-bind="value : Emp1DriverLicenseExpDate"/></div>
+                            </td>
+                            <td />
+                            <td />
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 357px;">
+                                <input style="width: 353px;" class="" id="Employees_1__Name" 
+                                     type="text" value="" data-bind="value : Emp2Name" />
+                            </td>
+                            <td>
+                                <input style="width: 352px;margin-left:1px;" class="" id="Employees_1__ServiceProvided" 
+                                     type="text" value="" data-bind="value : Emp2ServiceProvided" />
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 11px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -2px;">
+                                    <tr style="vertical-align: top;">
+                                        <td style="width: 44px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd15" name="Emp2RbTransporting" data-bind="checked : Emp2RbTransportingYesNo"/>
+                                                <label for="rd15" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="No" id="rd16" name="Emp2RbTransporting" data-bind="checked : Emp2RbTransportingYesNo"/>
+                                                <label for="rd16" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="padding-left: 170px;">
+                                            <div class="fleft" style="top: -2px;">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_1__InsuranceExpDate"
+                                                     type="text" value="" data-bind="value : Emp2AutoInsuranceExpDate" />
+                                            </div>
+                                            <div class="fleft">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_1__RegistrationExpDate"
+                                                    type="text" value="" data-bind="value : Emp2RegistrationExpDate" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="padding: 9px 0 0 2px;">
+                                <div class="drift" style="">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="top:-3px;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd17" name="Emp2RbProvidingServicesInHome" data-bind="checked : Emp2RbProvidingServicesInHomeYesNo"/>
+                                                <label for="rd17" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd18" name="Emp2RbProvidingServicesInHome" data-bind="checked : Emp2RbProvidingServicesInHomeYesNo"/>
+                                                <label for="rd18" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="padding-left: 180px;">
+                                                <div class="fleft" style="top: -2px;">
+                                                    <input style="width: 85px;" class="DatePicker" id="Employees_1__InspectionDate" 
+                                                        type="text" value="" data-bind="value : Emp2RbProvidingServicesInHomeIfYesCurrInspectionDate"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -5px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd19" name="Emp2RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp2RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                                <label for="rd19" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd20" name="Emp2RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp2RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                                <label for="rd20" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -4px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd21" name="Emp2RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp2RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                                <label for="rd21" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="fleft">
+                                                <input type="radio" value="No" id="rd22" name="Emp2RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp2RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                                <label for="rd22" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" style="margin-top:8px;">
+                        <tr>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__DateHire" 
+                                        type="text" value="" data-bind="value : Emp2DateHire"/></div>
+                            </td>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__CPRExpDate"
+                                        type="text" value="" data-bind="value : Emp2CPRExpDate"/></div>
+                            </td>
+                            <td>
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__Article9ExpDate"
+                                        type="text" value="" data-bind="value : Emp2Article9ExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 17px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -1px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft">
+                                                <input type="radio" value="Yes" id="rd23" name="Emp2RbAppResumeOnFile" data-bind="checked : Emp2RbAppResumeOnFileYesNo"/>
+                                                <label for="rd23" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                                <input type="radio" value="No" id="rd24" name="Emp2RbAppResumeOnFile" data-bind="checked : Emp2RbAppResumeOnFileYesNo"/>
+                                                <label for="rd24" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__FirstAidExpDate"
+                                        type="text" value="" data-bind="value : Emp2FirstAidExpDate"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="Employees_1__CitExpDate fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__CitExpDate"
+                                        type="text" value="" data-bind="value : Emp2CitExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 14px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -4px;margin-top:1px;">
+                                <tr>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                                <input type="checkbox" value="1"  data-bind="checked : Emp2CbReferencesOnFile1"/>
+                                            </div>
+                                        </td>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                                <input type="checkbox" value="2"  data-bind="checked : Emp2CbReferencesOnFile2"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                                <input type="checkbox" value="3"  data-bind="checked : Emp2CbReferencesOnFile3"/>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__FingerPrintCardExpDate"
+                                        type="text" value="" data-bind="value : Emp2FingerPrintCardExpDate"/></div>
+                            </td>
+                            <td style="padding: 17px 0 0 1px;">
+                                <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                        <td style="width: 50px;" style="margin-left:2px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd25" name="Emp2RbClientOrientationVerified" data-bind="checked : Emp2RbClientOrientationVerifiedYesNo"/>
+                                               <label for="rd25" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;margin-left:1px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="No" id="rd26" name="Emp2RbClientOrientationVerified" data-bind="checked : Emp2RbClientOrientationVerifiedYesNo"/>
+                                               <label for="rd26" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 16px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -2px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft" style="margin-left:2px;">
+                                               <input type="radio" value="Yes" id="rd27" name="Emp2RbEducationVerified" data-bind="checked : Emp2RbEducationVerifiedYesNo"/>
+                                               <label for="rd27" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                               <input type="radio" value="No" id="rd28" name="Emp2RbEducationVerified" data-bind="checked : Emp2RbEducationVerifiedYesNo"/>
+                                               <label for="rd28" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_1__FingerPrintsTaken"
+                                        type="text" value="" data-bind="value : Emp2FingerPrintsTaken"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class=" DatePicker" id="Employees_1__DateOfBirth"
+                                        type="text" value="" data-bind="value : Emp2DateOfBirth"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class=" DatePicker" id="Employees_1__CriminalSelfDisclosureExpDate"
+                                        type="text" value="" data-bind="value : Emp2CriminalSelfDisclosureExpDate"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px; height: 48px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class=" DatePicker" id="Employees_1__DriverLicenseExpDate"
+                                        type="text" value="" data-bind="value : Emp2DriverLicenseExpDate"/></div>
+                            </td>
+                            <td />
+                            <td />
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 357px;">
+                                <input style="width: 353px;" class="" id="Employees_2__Name" 
+                                     type="text" value="" data-bind="value : Emp3Name"/>
+                            </td>
+                            <td>
+                                <input style="width: 352px;" class="" id="Employees_2__ServiceProvided" 
+                                    type="text" value="" data-bind="value : Emp3ServiceProvided"/>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 13px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -2px;">
+                                    <tr style="vertical-align: top;">
+                                        <td style="width: 44px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd29" name="Emp3RbTransporting" data-bind="checked : Emp3RbTransportingYesNo"/>
+                                               <label for="rd29" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;">
+                                            <div class="Employees_2__Transporting fleft">
+                                               <input type="radio" value="No" id="rd30" name="Emp3RbTransporting" data-bind="checked : Emp3RbTransportingYesNo"/>
+                                               <label for="rd30" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="padding-left: 170px;">
+                                            <div class="fleft" style="top: -2px;">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_2__InsuranceExpDate"
+                                                    type="text" value="" data-bind="value : Emp3AutoInsuranceExpDate"/>
+                                            </div>
+                                            <div class="fleft">
+                                                <input style="width: 85px;" class="DatePicker" id="Employees_2__RegistrationExpDate"
+                                                    type="text" value="" data-bind="value : Emp3RegistrationExpDate"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="padding: 11px 0 0 2px;">
+                                <div class="drift" style="">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="top:-3px;">
+                                            <td style="width: 44px;">
+                                                <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd31" name="Emp3RbProvidingServicesInHome" data-bind="checked : Emp3RbProvidingServicesInHomeYesNo"/>
+                                               <label for="rd31" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                               <div class="fleft">
+                                               <input type="radio" value="No" id="rd32" name="Emp3RbProvidingServicesInHome" data-bind="checked : Emp3RbProvidingServicesInHomeYesNo"/>
+                                               <label for="rd32" class="forradio"></label>
+                                               </div>
+                                            </td>
+                                            <td style="padding-left: 180px;">
+                                                <div class="fleft" style="top: -2px;">
+                                                    <input style="width: 85px;" class="DatePicker" id="Employees_2__InspectionDate" 
+                                                        type="text" value="" data-bind="value : Emp3RbProvidingServicesInHomeIfYesCurrInspectionDate"/>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -5px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                               <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd33" name="Emp3RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp3RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                               <label for="rd33" class="forradio"></label>
+                                               </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="Employees_2__HouseholdMember fleft">
+                                               <input type="radio" value="No" id="rd34" name="Emp3RbProvidingServicesInHomeHouseHoldMembers" data-bind="checked : Emp3RbProvidingServicesInHomeHouseHoldMembersYesNo"/>
+                                               <label for="rd34" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="top: -4px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr style="vertical-align: top;">
+                                            <td style="width: 44px;">
+                                                <div class="Employees_2__FingerprintCardVerified fleft">
+                                               <input type="radio" value="Yes" id="rd35" name="Emp3RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp3RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                               <label for="rd35" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                            <td style="width: 40px;">
+                                                <div class="Employees_2__FingerprintCardVerified fleft">
+                                               <input type="radio" value="No" id="rd36" name="Emp3RbProvidingServicesInHomeFingerPrintCardsVerified" data-bind="checked : Emp3RbProvidingServicesInHomeFingerPrintCardsVerifiedYesNo"/>
+                                               <label for="rd36" class="forradio"></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" style="margin-top:8px;">
+                        <tr>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__DateHire" 
+                                        type="text" value="" data-bind="value : Emp3DateHire"/></div>
+                            </td>
+                            <td style="width: 238px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class=" DatePicker" id="Employees_2__CPRExpDate"
+                                        type="text" value="" data-bind="value : Emp3CPRExpDate"/></div>
+                            </td>
+                            <td>
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__Article9ExpDate"
+                                        type="text" value="" data-bind="value : Emp3Article9ExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 17px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -1px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft">
+                                            
+                                               <input type="radio" value="Yes" id="rd37" name="Emp3RbAppResumeOnFile" data-bind="checked : Emp3RbAppResumeOnFileYesNo"/>
+                                               <label for="rd37" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="Employees_2__AppResumeOnFile fleft">
+                                               <input type="radio" value="No" id="rd38" name="Emp3RbAppResumeOnFile" data-bind="checked : Emp3RbAppResumeOnFileYesNo"/>
+                                               <label for="rd38" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__FirstAidExpDate"
+                                        type="text" value="" data-bind="value : Emp3FirstAidExpDate"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__CitExpDate"
+                                        type="text" value="" data-bind="value : Emp3CitExpDate"/></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 14px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -4px;margin-top:1px;">
+                                <tr>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                                <input type="checkbox" value="1"  data-bind="checked : Emp3CbReferencesOnFile1"/>
+                                            </div>
+                                        </td>
+                                        <td style="width: 35px;">
+                                            <div class="fleft">
+                                                <input type="checkbox" value="2"  data-bind="checked : Emp3CbReferencesOnFile2"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                                <input type="checkbox" value="3"  data-bind="checked : Emp3CbReferencesOnFile3"/>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__FingerPrintCardExpDate"
+                                        type="text" value="" data-bind="value : Emp3FingerPrintCardExpDate"/></div>
+                            </td>
+                            <td style="padding: 17px 0 0 1px;">
+                                <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd39" name="Emp3RbClientOrientationVerified" data-bind="checked : Emp3RbClientOrientationVerifiedYesNo"/>
+                                               <label for="rd39" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td style="width: 40px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="No" id="rd40" name="Emp3RbClientOrientationVerified" data-bind="checked : Emp3RbClientOrientationVerifiedYesNo"/>
+                                               <label for="rd40" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 14px;">
+                                <table cellpadding="0" cellspacing="0" style="margin-left: -1px;margin-top:1px;">
+                                <tr>
+                                        <td style="width: 50px;">
+                                            <div class="fleft">
+                                               <input type="radio" value="Yes" id="rd41" name="Emp3RbEducationVerified" data-bind="checked : Emp3RbEducationVerifiedYesNo"/>
+                                               <label for="rd41" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fleft">
+                                               <input type="radio" value="No" id="rd42" name="Emp3RbEducationVerified" data-bind="checked : Emp3RbEducationVerifiedYesNo"/>
+                                               <label for="rd42" class="forradio"></label>
+                                            </div>
+                                        </td>
+                                </tr>
+                                </table>
+                            </td>
+                            <td style="padding-top: 11px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__FingerPrintsTaken"
+                                        type="text" value="" data-bind="value : Emp3FingerPrintsTaken"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__DateOfBirth"
+                                        name="Employees[2].DateOfBirth" type="text" value="" data-bind="value : Emp3DateOfBirth"/></div>
+                            </td>
+                            <td style="padding-top: 12px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__CriminalSelfDisclosureExpDate"
+                                        name="Employees[2].CriminalSelfDisclosureExpDate" type="text" value="" data-bind="value : Emp3CriminalSelfDisclosureExpDate"/></div>
+                            </td>
+                            <td />
+                        </tr>
+                        <tr style="vertical-align: top;">
+                            <td style="padding-top: 12px; height: 48px;">
+                                <div class="fleft">
+                                    <input style="width: 150px;" class="DatePicker" id="Employees_2__DriverLicenseExpDate"
+                                        name="Employees[2].DriverLicenseExpDate" type="text" value="" data-bind="value : Emp3DriverLicenseExpDate"/></div>
+                            </td>
+                            <td />
+                            <td />
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="LastPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_2.svg">
+            </iframe>
+            <div class="pageContent">
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="dontPrint" style="position: fixed; top: 100%;">
+        <div id="jsonString" />
+    </div>
+</body>
+</html>

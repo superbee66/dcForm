@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
+    <meta name="viewport" content="width=device-width" />
+    <title>LCR-1000AFORFF_0114</title>
+
+    <link href="jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+    <link href="_CustomStyles.css" rel="stylesheet" />
+    <link href="jQueryUI_Custom.css" rel="stylesheet" />
+    <link href="jquery.datetimepicker.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery-signature-pad.js"></script>
+    <script type="text/javascript" src="_SiteCustom.js" ></script>
+    <script type="text/javascript" src="knockout-3.4.0.js" ></script>
+    <script type="text/javascript" src="knockout.mapping-latest.js" ></script>
+    <script type="text/javascript" src="jquery.datetimepicker.full.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
+    <style>
+            input[type=radio]{
+            display:none;
+            }
+
+            label.forradio{
+            width:15px;
+            height:15px;
+            border-radius:2;
+            border: 1px #3a3a3a solid;
+            display:block;
+            line-height:22px;
+            text-align:center;
+            color:black;
+            font-size:40pt;
+            cursor:pointer;
+            background:white;
+            position:relative;
+            } 
+
+            input[type=radio]:checked + label:before{
+               opacity:1;
+            }
+
+            label.forradio:before{
+                position:absolute;
+                height:15px;
+                width:15px;
+                background-image:url('Radio_Checked.png');
+                content:'';
+                opacity:0;
+            }
+
+            .RegPage
+            {
+                page-break-after: always;
+                height: 996px;
+                overflow-y: hidden;
+            }
+
+            .LastPage
+            {
+                height: 996px;
+                overflow-y: hidden;
+            }
+            
+            
+            label.forradio1{
+            width:15px;
+            height:15px;
+            margin-top:1px;
+            margin-bottom:4px;
+            margin-left:2px;
+            border-radius:2;
+            border: 1px #3a3a3a solid;
+            display:block;
+            line-height:22px;
+            text-align:center;
+            color:black;
+            font-size:40pt;
+            cursor:pointer;
+            background:white;
+            position:relative;
+            } 
+
+            input[type=radio]:checked + label:before{
+               opacity:1;
+            }
+
+            label.forradio1:before{
+                position:absolute;
+                height:15px;
+                width:15px;
+                background-image:url('Radio_Checked.png');
+                content:'';
+                opacity:0;
+            }
+    </style>
+    <script type="text/javascript">
+        function openSignaturePad(obj, objType) {
+            var xSize = 2;
+            var objDialogId = "objSinaturePad";
+            if (objType == 'Initials') { xSize = 3; objDialogId = "objInitialsPad"; }
+            var objControlId = $(obj).attr("id").toString().substring(3);
+            var w = $(obj).width() * xSize;
+            var h = $(obj).height() * xSize;
+            $('.objSignatureCanvas').attr('style', 'width: ' + w + 'px; height: ' + h + 'px; border: 1px solid Red;')
+            var originalContent;
+            $('#' + objDialogId).dialog({
+                resizable: false,
+                height: h + 125,
+                width: w + 40,
+                modal: true,
+                //Added below otherwise dialog was retaining previous element on cross button
+                open: function (event, ui) {
+                    originalContent = $("#objSinaturePad").html();
+                },
+                close: function (event, ui) {
+                    $("#objSinaturePad").html(originalContent);
+                }
+            });
+            var wrapper = document.getElementById(objDialogId),
+            clearButton = wrapper.querySelector('[data-action=clear]'),
+            saveButton = wrapper.querySelector('[data-action=save]'),
+            canvas = wrapper.querySelector('canvas'), signaturePad;
+            canvas.width = w;
+            canvas.height = h;
+            signaturePad = new SignaturePad(canvas);
+            signaturePad.clear();
+            signaturePad.penColor = 'Navy';
+            var clearSignature = function (event) {
+                signaturePad.clear();
+            };
+            var applySignature = function (event) {
+                var srcSignature = '';
+                if (!signaturePad.isEmpty()) {
+                    srcSignature = signaturePad.toDataURL();
+                }
+
+                $('#' + objControlId).val(srcSignature);
+                $('#img' + objControlId).attr('src', srcSignature);
+                if (objControlId == 'HcbsAuditorSignatureImage') {
+                    if (srcSignature == '' || srcSignature == undefined) {
+                        $('#img' + objControlId).parent().addClass('reqField');
+                        viewModel.HcbsAuditorDateSigned('');
+                        $('#HcbsAuditorDateSigned').parent().addClass('reqField');
+                        passesValidation = false;
+                    }
+                    else {
+                        $('#img' + objControlId).parent().removeClass('reqField');
+                        $('#HcbsAuditorDateSigned').parent().removeClass('reqField');
+                        $('#HcbsAuditorDateSigned').datepicker('setDate', '+0');
+                        viewModel.HcbsAuditorDateSigned($('#HcbsAuditorDateSigned').val());
+
+                    }
+                }
+                if (objControlId == 'ServiceProviderSignatureImage') {
+                    if (srcSignature == '' || srcSignature == undefined) {
+                        //$('#img' + objControlId).parent().addClass('reqField');
+                        $('#ServiceProviderDateSigned').parent().addClass('reqField');
+                        viewModel.ServiceProviderDateSigned('');
+                    }
+                    else {
+                        //$('#img' + objControlId).parent().removeClass('reqField');
+                        $('#ServiceProviderDateSigned').parent().removeClass('reqField');
+                        $('#ServiceProviderDateSigned').datepicker('setDate', '+0');
+                        viewModel.ServiceProviderDateSigned($('#ServiceProviderDateSigned').val());
+                    }
+                }
+
+                clearButton.removeEventListener('click', clearSignature);
+                saveButton.removeEventListener('click', applySignature);
+                LockingTheFormIfAnySignaturePresent(objControlId, srcSignature);
+                $('#' + objDialogId).dialog('close');
+            };
+            clearButton.addEventListener('click', clearSignature);
+            saveButton.addEventListener('click', applySignature);
+        }
+
+        function LockingTheFormIfAnySignaturePresent(objControlId, srcSignature) {
+            if (srcSignature != undefined && srcSignature != '') {
+                //Lock entire form except signatures
+                $(".formBody").find("input,button,textarea,select").prop("disabled", true);
+                $("#imgServiceProviderSignatureImage").prop("disabled", false);
+                $("#imgHcbsAuditorSignatureImage").prop("disabled", false);
+
+            }
+            else {
+                //signature is not applied Unlock fields.
+                if (($("#imgServiceProviderSignatureImage").attr('src') == '' || $("#imgServiceProviderSignatureImage").attr('src') == undefined) &&
+                ($("#imgHcbsAuditorSignatureImage").attr('src') == '' || $("#imgHcbsAuditorSignatureImage").attr('src') == undefined))
+                    $(".formBody").find("input,button,textarea,select").prop("disabled", false);
+                $(".topsection").prop("disabled", true);
+                //$(".clsOtherServices
+            }
+            $("#savebutton").prop("disabled", false);
+        }
+
+        var viewModel = null;
+        var myjsonstring = "";
+        var passesValidation = true;
+        $(document).ready(function () {
+            $("#savebutton").prop("disabled", false);
+            $('.DatePicker').datepicker({
+                changeMonth: true, changeYear: true
+            });
+            
+            $('.DateTimePicker').datetimepicker({
+                format: 'Y/m/d h:i a',
+                onClose: function () {
+                }
+            });
+
+            var jsonfilepath = getParameterByName("jsonpath");
+            $.getJSON(jsonfilepath, function (data) {
+                myjsonstring = JSON.stringify(data);
+            });
+            viewModel = ko.mapping.fromJSON(myjsonstring);
+            var jsondates = viewModel.IfNoDoesTheDirectorExpDate();
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.IfNoDoesTheDirectorExpDate('');
+            }
+            jsondates = viewModel.AreServicesDeliveredYesDate();
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.AreServicesDeliveredYesDate('');
+            }
+            jsondates = viewModel.TotalDirectCareStaff();
+            if (jsondates == '0') {
+                viewModel.TotalDirectCareStaff('');
+            }
+            jsondates = viewModel.TotalFilesAudited();
+            if (jsondates == '0') {
+                viewModel.TotalFilesAudited('');
+            }
+
+            jsondates = viewModel.AuditDatePage1Page2();
+            if (jsondates == '0001-01-01T00:00:00') {
+                viewModel.AuditDatePage1Page2('');
+            }
+            else {
+                viewModel.AuditDatePage1Page2(moment(jsondates).format('YYYY/MM/DD h:mm a'));
+            }
+
+            //jsondates = viewModel.AuditDatePage1Page2().replace(/T/g, " ");
+            //viewModel.AuditDatePage1Page2(jsondates);
+
+            ko.applyBindings(viewModel);
+            //$('img').each(function () { var src = $(this).attr('src'); if (src === undefined) { $(this).attr('src', 'Spacer.gif'); } });
+
+            $(".chb").change(function () {
+                $(".chb").prop('checked', false);
+                $(this).prop('checked', true);
+            });
+            formValidation();
+
+            if ((viewModel.HcbsAuditorSignatureImage() != undefined && viewModel.HcbsAuditorSignatureImage() != '') || (viewModel.ServiceProviderSignatureImage() != undefined && viewModel.ServiceProviderSignatureImage() != '')) {
+                //Signaures Present Lock the form
+                LockingTheFormIfAnySignaturePresent(null, 'present');
+            }
+        });
+
+        function formValidation() {
+            //return true;
+            //debugger;
+            // Constant Variables
+            //-------------------------------------------------------------------------------------------------------------------->
+
+            if ($('#StaffNumber').val().length == 0) {
+                $('#StaffNumber').parent().addClass('reqField');
+                passesValidation = false;
+            }
+            else {
+                $('#StaffNumber').parent().removeClass('reqField');
+            }
+
+            if ($('#FilesAudited').val().length == 0) {
+                $('#FilesAudited').parent().addClass('reqField');
+                passesValidation = false;
+            }
+            else {
+                $('#FilesAudited').parent().removeClass('reqField');
+            }
+
+            //            $('.req').each(function () {
+            //                var id = $(this).attr("id");
+
+            //                if ($(this).val().length == 0 || id == undefined) {
+            //                    $('#' + id).addClass('reqField');
+            //                    passesValidation = false;
+            //                    alert(id);
+            //                    alert("HERE 2");
+            //                } else {
+            //                    $('#' + id).removeClass('reqField');
+            //                }
+            //            });
+
+            //Top Section CheckBoxes
+            var sThisVal = false;
+            //$('input:checkbox.topsection').each(function () {
+            //if (sThisVal == false && this.checked) {
+            //sThisVal = true;
+            //}
+            //});
+            //if (sThisVal == false) {
+            //$('.topsection').addClass('reqField');
+            //passesValidation = false;
+            //alert("HERE 3");
+            //}
+            //else {
+            //$('.topsection').removeClass('reqField');
+            //}
+
+            //Are Services Delivered at this Location
+            if ($("input[type='radio'][name='RbAreServicesDelivered']:checked").length == 0) {
+                $('.ServicesAtLocation').addClass('reqField');
+                $('.clsInspectionAddress').removeClass('reqField');
+                $('.clsInspectionDate').removeClass('reqField');
+                $('.clsInspectorName').removeClass('reqField');
+                passesValidation = false;
+                //alert("HERE 4");
+            }
+            else {
+                $('.ServicesAtLocation').removeClass('reqField');
+                if ($('#rd6').is(':checked')) {
+
+                    $('.clsInspectionAddress').addClass('reqField');
+                    if ($('#InspectionAddress').val().length == 0) {
+                        $('.clsInspectionAddress').addClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 5");
+                    }
+                    else {
+                        $('.clsInspectionAddress').removeClass('reqField');
+                    }
+
+                    $('.clsInspectionDate').addClass('reqField');
+                    if ($('#InspectionDate').val().length == 0) {
+                        $('.clsInspectionDate').addClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 6");
+                    }
+                    else {
+                        $('.clsInspectionDate').removeClass('reqField');
+                    }
+
+                    $('.clsInspectorName').addClass('reqField');
+                    if ($('#InspectorName').val().length == 0) {
+                        $('.clsInspectorName').addClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 7");
+                    }
+                    else {
+                        $('.clsInspectorName').removeClass('reqField');
+                    }
+                }
+                else {
+                    $('.clsInspectionAddress').removeClass('reqField');
+                    $('.clsInspectionDate').removeClass('reqField');
+                    $('.clsInspectorName').removeClass('reqField');
+                }
+            }
+
+            //Has An Olcr Inspection been Completed
+
+            if ($("input[type='radio'][name='RbHasAnOLCRInspection']:checked").length == 0) {
+                $('.InspectionCompleted').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 8");
+            }
+            else {
+                $('.InspectionCompleted').removeClass('reqField');
+            }
+
+            //IsAgencyMedicareCertified
+            if ($("input[type='radio'][name='RbIsAgencyMedicareCertiFied']:checked").length == 0) {
+                $('.clsRbIsAgencyMedicareCertiFied').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 9");
+            }
+            else {
+                $('.clsRbIsAgencyMedicareCertiFied').removeClass('reqField');
+            }
+
+            //Transporting
+            if ($("input[type='radio'][name='RbTransporting']:checked").length == 0) {
+                $('.Transporting').addClass('reqField');
+
+                $('.InsRegCurrent').removeClass('reqField');
+                $('.InsRegCopies').removeClass('reqField');
+                passesValidation = false;
+                //alert("HERE 10");
+            }
+            else {
+                //InsuranceRegistrationCurrent
+                $('.Transporting').removeClass('reqField');
+                var val = $("input[type='radio'][name='RbTransporting']:checked").val();
+                if (val == 'Yes') {
+                    if ($("input[type='radio'][name='RbInsuranceRegistrationCurrent']:checked").length == 0) {
+                        $('.InsRegCurrent').addClass('reqField');
+                        $('.InsRegCopies').removeClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 11");
+                    }
+                    else {
+                        $('.InsRegCurrent').removeClass('reqField');
+                        val = $("input[type='radio'][name='RbInsuranceRegistrationCurrent']:checked").val();
+                        if (val == 'Yes') {
+                            if ($("input[type='radio'][name='RbIfYesAgencyStaffMatrix']:checked").length == 0) {
+                                $('.InsRegCopies').addClass('reqField');
+                                passesValidation = false;
+                                //alert("HERE 12");
+                            }
+                            else {
+                                $('.InsRegCopies').removeClass('reqField');
+                            }
+                        }
+                        else {
+
+                            $('.InsRegCopies').removeClass('reqField');
+                        }
+                    }
+                }
+                else {
+                    $("input[type='radio'][name='RbInsuranceRegistrationCurrent']").prop('checked', false);
+                    $("input[type='radio'][name='RbIfYesAgencyStaffMatrix']").prop('checked', false);
+                    $('.InsRegCopies').removeClass('reqField');
+                    $('.InsRegCurrent').removeClass('reqField');
+                }
+            }
+
+            //Are Classes for CPR
+            $('.InstructorClasses').addClass('reqField');
+            if ($("input[type='radio'][name='RbAreClassesForCPR']:checked").length == 0) {
+                $('.InstructorClasses').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 13");
+            }
+            else {
+                $('.InstructorClasses').removeClass('reqField');
+            }
+
+            //Does The Director/Owner Also
+            //$('.DirOwnerServClients').addClass('reqField');
+            if ($("input[type='radio'][name='RbDoesTheDirector']:checked").length == 0) {
+                $('.DirOwnerServClients').addClass('reqField');
+                $('.DirOwnerListed').removeClass('reqField');
+                $('.clsDirOwnerFPExpDate').removeClass('reqField');
+                passesValidation = false;
+                //alert("HERE 14");
+            }
+            else {
+                $('.DirOwnerServClients').removeClass('reqField');
+                var val = $("input[type='radio'][name='RbDoesTheDirector']:checked").val();
+                if (val == "Yes") {//YES
+                    $('.clsDirOwnerFPExpDate').removeClass('reqField');
+                    if ($("input[type='radio'][name='RbIfYesDoesTheDirector']:checked").length == 0) {
+                        $('.DirOwnerListed').addClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 15");
+                    }
+                    else {
+                        $('.DirOwnerListed').removeClass('reqField');
+                    }
+                }
+                else {//It is NO
+                    $('.clsDirOwnerFPExpDate').addClass('reqField');
+                    $('.DirOwnerListed').removeClass('reqField');
+                    if ($('#DirOwnerFPExpDate').val().length == 0) {
+                        $('.clsDirOwnerFPExpDate').addClass('reqField');
+                        passesValidation = false;
+                        //alert("HERE 16");
+                    }
+                    else {
+                        $('.clsDirOwnerFPExpDate').removeClass('reqField');
+                    }
+                }
+
+            }
+            //Received current agency staff matrix
+            if ($("input[type='radio'][name='RbReceivedCurrentAgencyStaff']:checked").length == 0) {
+                $('.AgencyStaffMatrix').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 17");
+            }
+            else {
+                $('.AgencyStaffMatrix').removeClass('reqField');
+            }
+
+
+            if ($("input[type='radio'][name='RbIsTheAgencyRequesting']:checked").length == 0) {
+                $('.AgencyReqRegistyChecks').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 18");
+            }
+            else {
+                $('.AgencyReqRegistyChecks').removeClass('reqField');
+            }
+
+            //OtherServices
+            //if ($("input[type='checkbox'][name='other']:checked").length == 0) {
+            //$('.clsOtherServices').removeClass('reqField');
+            //}
+            //else {
+            //if ($('#OtherServices').val().length == 0) {
+            //$('.clsOtherServices').addClass('reqField');
+            //passesValidation = false;
+            //alert("HERE 19");
+            //}
+            //else {
+            //$('.clsOtherServices').removeClass('reqField');
+            //}
+            //}
+
+            if ($("input[type='radio'][name='RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidencen']:checked").length == 0) {
+                $('.AgencyCompliance').addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 20");
+            }
+            else {
+                $('.AgencyCompliance').removeClass('reqField');
+            }
+
+
+
+            $('.reqSignature').each(function () {
+                var id = $(this).attr("id");
+                $('#' + id).parent().removeClass('reqField');
+                var imdId = $(this);
+                if (imdId.attr('src') === undefined || imdId.attr('src') === '') {
+                    $('#' + id).parent().addClass('reqField');
+                    passesValidation = false;
+                    //alert("HERE 21");
+                } else {
+                    $('#' + id).parent().removeClass('reqField');
+                }
+            });
+
+            if ($('#ServiceProviderPrintName').val().length == 0) {
+                $('#ServiceProviderPrintName').parent().addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 22");
+            }
+            else {
+                $('#ServiceProviderPrintName').parent().removeClass('reqField');
+            }
+
+            if ($('#ServiceProviderDateSigned').val().length == 0) {
+                $('#ServiceProviderDateSigned').parent().addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 23");
+            }
+            else {
+                $('#ServiceProviderDateSigned').parent().removeClass('reqField');
+            }
+
+            if ($('#HcbsAuditorPrintName').val().length == 0) {
+                $('#HcbsAuditorPrintName').parent().addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 24");
+            }
+            else {
+                $('#HcbsAuditorPrintName').parent().removeClass('reqField');
+            }
+
+            if ($('#HcbsAuditorDateSigned').val().length == 0) {
+                $('#HcbsAuditorDateSigned').parent().addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 25");
+            }
+            else {
+                $('#HcbsAuditorDateSigned').parent().removeClass('reqField');
+            }
+
+            if ($('#Representative').val().length == 0) {
+                $('#Representative').parent().addClass('reqField');
+                passesValidation = false;
+                //alert("HERE 26");
+            }
+            else {
+                $('#Representative').parent().removeClass('reqField');
+            }
+
+
+            $("#savebutton").prop("disabled", false);
+        }
+        //Disabling the print functionality on the viewer because of the nature of the beast involved.
+        //first of all  the Digital Library form is not correct and instead of yes no as checkboxes it should be radio button in word technically, However given the
+        //Time that will be required to ask the users to change the digital form , we are keeping form as it is , and using css trick to depict a radio button as checkbox.
+        //Print will be given by SSRS team thats what has been confirmed and its a known issue of unable to print background images.
+        //        function Print() {
+        //            $('.dontPrint').attr('style', 'display: none;');
+        //            window.print();
+        //            $('.dontPrint').attr('style', 'display: inline;');
+        //        }
+
+        function submitCustomForm() {
+            //formValidation();
+            //debugger;
+            //if (passesValidation) {
+            viewModel.ServiceProviderSignatureImage($('#imgServiceProviderSignatureImage').attr('src'));
+            viewModel.HcbsAuditorSignatureImage($('#imgHcbsAuditorSignatureImage').attr('src'));
+            var unmapped = ko.mapping.toJSON(viewModel);
+            $('#jsonString').html(unmapped);
+            window.location = window.location;
+
+            //}
+
+            //if (passesValidation) {
+            alert("Saved Successfully!");
+            //}
+            //            else {
+            //                alert("Entered fields saved");
+            //            }
+        }
+
+    </script>
+</head>
+<body>
+    <form method="post">
+    <div class="formBody" onclick="passesValidation = true; formValidation();" onchange="passesValidation = true; formValidation();" >
+        <table class="w100p dontPrint" style="page-break-after: always;display:">
+        <tr>
+            <td style="text-align: right;">
+                <input type="button" value="Save" id="savebutton" onclick="submitCustomForm()" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr />
+            </td>
+        </tr>
+    </table>
+        <input id="DocId" name="DocId" type="hidden" value="" />
+        <input id="DocChecksum" name="DocChecksum" type="hidden" value="" />
+        <input id="DocTitle" name="DocTitle" type="hidden" value="" />
+        <input id="DocTypeName" name="DocTypeName" type="hidden" value="" />
+        <input id="solutionVersion" name="solutionVersion" type="hidden" value="" />
+        <input data-val="true" data-val-date="The field DateCompleted must be a date." id="DateCompleted"
+            name="DateCompleted" type="hidden" value="" />
+        <input id="DocStatus" name="DocStatus" type="hidden" value="" />
+        <div class="RegPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_1.svg">
+            </iframe>
+            <div class="pageContent">
+                <div class="drift" style="padding: 84px 0 0 24px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div class="OfficeName fleft">
+                                    <input style="width: 234px;" class="req" id="OfficeName" name="OfficeName" onkeyup="objMaxWidth(this)"
+                                        type="text" value="" data-bind="value : AgencyNamePage1Page2"  readonly/></div>
+                            </td>
+                            <td style="width: 295px;">
+                                <div class="Representative fleft">
+                                    <input style="width: 288px;" class="" id="Representative" name="Representative"
+                                        onkeyup="objMaxWidth(this)" type="text" value="" data-bind="value : AgencyRepNamePage1Page2"  /></div>
+                            </td>
+                            <td>
+                                <div class="DateOfAssessment fleft" style="">
+                                    <input style="width: 150px;" class="req DateTimePicker" data-val="true" data-val-date="The field DateOfAssessment must be a date."
+                                        id="DateOfAssessment" name="DateOfAssessment" type="text" value="" data-bind="value : AuditDatePage1Page2"  /></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0px 0 0 21px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr style="vertical-align: top;">
+                            <td style="width: 190px;">
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="03"  data-bind="checked : Cb03RespiratoryTherapy" disabled="disabled"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="19" data-bind="checked : Cb19ICFMR"  disabled="disabled" />
+                                                <label for="cb191" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="28" data-bind="checked : Cb28AttendantCare"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="31" data-bind="checked : Cb31NonEmergencyTransportation"  disabled="disabled" />
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="42" data-bind="checked : Cb42FORMayCare"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="width: 190px;">
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="05" data-bind="checked : Cb05OccupationalTherapy"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" data-bind="checked : Cb20Hospice" value="20"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 30px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" data-bind="checked : Cb29HomeHealthAide" value="29"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" data-bind="checked : Cb46EnvironmentalModifications"  value="46"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="width: 158px;">
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" name="cbServices" value="06" data-bind="checked : Cb06PhysicalTherapy"  disabled="disabled"   />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" data-bind="checked : Cb23Homemaker"  value="23"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="30" data-bind="checked : Cb30HomeHealthNurse"  disabled="disabled" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="32" data-bind="checked : Cb32Habilitation"  disabled="disabled"  />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="07" data-bind="checked : Cb07SPTHearingTherapy"  disabled="disabled"  />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 30px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" data-bind="checked : Cb26Respite" value="26"  disabled="disabled" />
+                                            </td> 
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="drift" style="height: 15px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <input class="topsection" type="checkbox" value="39" data-bind="checked : Cb39PersonalCareAttendant"  disabled="disabled"  />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="drift" style="padding-top: 3px;">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="width: 65px;">
+                                                <input class="topsection" type="checkbox" name="other" value="Other" data-bind="checked : cbOther"  disabled="disabled" />
+                                            </td>
+                                            <td class="clsOtherServices">
+                                                <input class="topsectionOtherText"style="width: 600px;" id="OtherServices" name="OtherServices" onkeyup="objMaxWidth(this)"
+                                                    type="text" value="" data-bind="value : OtherText" title="Enter other text." />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 4px 0 0 216px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 221px;">
+                                <div class="StaffNumber fleft">
+                                    <input style="width: 85px;" class="req" id="StaffNumber" name="StaffNumber" type="text"
+                                        value="" data-bind="value : TotalDirectCareStaff"/></div>
+                            </td>
+                            <td style="width: 295px;">
+                                <div class="FilesAudited fleft">
+                                    <input style="width: 85px;" class="req" id="FilesAudited" name="FilesAudited" type="text"
+                                        value="" data-bind="value : TotalFilesAudited"/></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px;">
+                    <table cellpadding="0" cellspacing="0" class="ServicesAtLocation">
+                        <tr>
+                            <td style="width: 50px;">
+                                <input type="radio" value="Yes" id="rd6" name="RbAreServicesDelivered" data-bind="checked : RbAreServicesDeliveredYesNo"/>
+                                <label for="rd6" class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                                <input type="radio"  id="rd7" name="RbAreServicesDelivered" data-bind="checked : RbAreServicesDeliveredYesNo" value="No" />
+                                <label for="rd7" class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 2px 0 0 23px; height: 35px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="width: 381px;">
+                                <div class="clsInspectionAddress fleft">
+                                    <input style="width: 361px;" id="InspectionAddress" name="InspectionAddress" type="text"
+                                        value=""data-bind="value : AreServicesDeliveredYesAddress" />
+                                </div>
+                            </td>
+                            <td style="width: 118px;">
+                                <div class="clsInspectionDate fleft">
+                                    <input style="width: 99px;" class="DatePicker" id="InspectionDate" name="InspectionDate"
+                                        type="text" value="" data-bind="value : AreServicesDeliveredYesDate"/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="clsInspectorName fleft">
+                                    <input style="width: 210px;" id="InspectorName" name="InspectorName" type="text"
+                                        value="" data-bind="value : AreServicesDeliveredYesInspectedBy" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 60px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr style="vertical-align: top;">
+                            <td style="width: 50px;">
+                                <div class="InspectionCompleted">
+                                    <input type="radio" id="rd3" value="Yes" name="RbHasAnOLCRInspection" data-bind="checked : RbHasAnOLCRInspectionYesNoNA"/>
+                                    <label for="rd3" class="forradio"></label>
+                                </div>
+                            </td>
+                            <td style="width: 40px;">
+                                <div class="InspectionCompleted">
+                                <input type="radio" id="rd4" value="No" name="RbHasAnOLCRInspection" data-bind="checked : RbHasAnOLCRInspectionYesNoNA"/>
+                                <label for="rd4" class="forradio"></label>
+                                </div>
+                            </td>
+                            <td style="width: 45px;" >
+                                <div style="margin: 34px 0 0 6px;" class="InspectionCompleted">
+                                <input type="radio" id="rd5" value="N/A" name="RbHasAnOLCRInspection" data-bind="checked : RbHasAnOLCRInspectionYesNoNA"/>
+                                <label for="rd5" class="forradio"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 23px;">
+                    <table cellpadding="0" cellspacing="0" class="MedicareCertified">
+                        <tr>
+                            <td style="width: 50px;">
+                            <div class="clsRbIsAgencyMedicareCertiFied">
+                                <input type="radio" value="Yes" id="rd8" name="RbIsAgencyMedicareCertiFied" data-bind="checked : RbIsAgencyMedicareCertiFiedYesNo"/>
+                                <label for="rd8" class="forradio"></label>
+                                </div>
+                            </td>
+                            <td style="width: 40px;">
+                            <div class="clsRbIsAgencyMedicareCertiFied">
+                                <input type="radio" value="No" id="rd9"  name="RbIsAgencyMedicareCertiFied" data-bind="checked : RbIsAgencyMedicareCertiFiedYesNo"/>
+                                <label for="rd9" class="forradio"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 21px;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="Transporting" style="width: 50px;">
+                                <input type="radio" value="Yes" id="rd10" name ="RbTransporting" data-bind="checked : RbTransportingYesNo" />
+                                <label for="rd10"  class="forradio"></label>
+                            </td>
+                            <td style="width: 354px;">
+                                <div class="Transporting fleft" style="width: 40px;">
+                                    <input type="radio" value="No" id="rd11" name ="RbTransporting" data-bind="checked : RbTransportingYesNo" />
+                                    <label for="rd11"  class="forradio"></label>
+                                </div>
+                            </td>
+                            <td class="InsRegCurrent" style="width: 49px;">
+                                <input type="radio" id="rd12" name="RbInsuranceRegistrationCurrent" value="Yes" data-bind="checked : RbInsuranceRegistrationCurrentYesNo"/>
+                                <label for="rd12"  class="forradio"></label>
+                            </td>
+                            <td class="InsRegCurrent" style="width: 40px;">
+                                <input type="radio" value="No" id="rd13" name="RbInsuranceRegistrationCurrent" data-bind="checked : RbInsuranceRegistrationCurrentYesNo"/>
+                                <label for="rd13"  class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 624px; height: 21px;">
+                    <table cellpadding="0" cellspacing="0" class="InsRegCopies">
+                        <tr>
+                            <td style="width: 49px;">
+                                <input type="radio" value="Yes" id="rd14" name="RbIfYesAgencyStaffMatrix" data-bind="checked : RbIfYesAgencyStaffMatrixYesNo" />
+                                <label for="rd14"  class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                                <input type="radio" value="No" id="rd15" name="RbIfYesAgencyStaffMatrix" data-bind="checked : RbIfYesAgencyStaffMatrixYesNo"/>
+                                <label for="rd15"  class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 22px;">
+                    <table cellpadding="0" cellspacing="0" class="InstructorClasses">
+                        <tr>
+                            <td style="width: 50px;">
+                                <input type="radio" id="rd16" name="RbAreClassesForCPR" value="Yes" data-bind="checked : RbAreClassesForCPRYesNo"/>
+                                <label for="rd16"  class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                                <input type="radio" value="No" id="rd17" name="RbAreClassesForCPR" data-bind="checked : RbAreClassesForCPRYesNo"/>
+                                <label for="rd17"  class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 21px;">
+                    <table cellpadding="0" cellspacing="0" class="DirOwnerServClients">
+                        <tr>
+                            <td style="width: 50px;">
+                                <input type="radio" id="rd18" name="RbDoesTheDirector" value="Yes" data-bind="checked : RbDoesTheDirectorYesNo"  />
+                                <label for="rd18"  class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                                <input type="radio" id="rd19" name="RbDoesTheDirector"  value="No" data-bind="checked : RbDoesTheDirectorYesNo" />
+                                <label for="rd19"  class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 464px; height: 20px;">
+                    <table cellpadding="0" cellspacing="0" class="DirOwnerListed">
+                        <tr>
+                            <td style="width: 49px;">
+                                <input type="radio" id="rd20" value="Yes" name="RbIfYesDoesTheDirector" data-bind="checked : RbIfYesDoesTheDirectorYesNo"/>
+                                <label for="rd20"  class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                                <input type="radio" value="No" name="RbIfYesDoesTheDirector" id="rd21" data-bind="checked : RbIfYesDoesTheDirectorYesNo"/>
+                                <label for="rd21"  class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 645px; height: 19px;">
+                    <table cellpadding="0" cellspacing="0" class="clsDirOwnerFPExpDate">
+                        <tr>
+                            <td style="width: 49px;">
+                                <input style="width: 85px;" class="DatePicker" id="DirOwnerFPExpDate" name="DirOwnerFPExpDate"
+                                    type="text" value="" data-bind="value : IfNoDoesTheDirectorExpDate" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 22px;">
+                    <table cellpadding="0" cellspacing="0" class="AgencyStaffMatrix">
+                        <tr >
+                            <td style="width: 50px;">
+                            <div>
+                                <input type="radio" id="rd22" value="Yes" name="RbReceivedCurrentAgencyStaff" data-bind="checked : RbReceivedCurrentAgencyStaffYesNo"/>
+                                <label for="rd22" class="forradio"></label>
+                                </div>
+                            </td>
+                            
+                            <td style="width: 40px;">
+                            <div>
+                                <input type="radio" id="rd23" value="No" name="RbReceivedCurrentAgencyStaff" data-bind="checked : RbReceivedCurrentAgencyStaffYesNo"/>
+                                <label for="rd23" class="forradio"></label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 37px;">
+                    <table cellpadding="0" cellspacing="0" class="AgencyReqRegistyChecks">
+                        <tr>
+                            <td style="width: 50px;">
+                            <input type="radio" id="rd24" value="Yes" name="RbIsTheAgencyRequesting" data-bind="checked : RbIsTheAgencyRequestingYesNo"/>
+                            <label for="rd24" class="forradio"></label>
+                            </td>
+                            <td style="width: 40px;">
+                            <input type="radio" id="rd25" value="No" name="RbIsTheAgencyRequesting" data-bind="checked : RbIsTheAgencyRequestingYesNo"/>
+                            <label for="rd25" class="forradio"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 25px; height: 241px;">
+                    <table cellpadding="0" cellspacing="0" class="NotesFindings">
+                        <tr>
+                            <td style="width: 49px;">
+                                <textarea id="NotesFindings" class="cssTextArea" cols="20"  rows="2" style="width: 705px; height: 235px; padding-top: 0;
+                                    padding-bottom: 0;" data-bind="value : NotesFindingsPage1">
+</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 113px;top:-1px;">
+                    <div class="drift">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="AgencyCompliance" style="width: 20px;">
+                                 <input type="radio" id="rd26" value="FullCompliance" name="RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidencen" data-bind="checked : RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidence"/>
+                                 <label for="rd26" class="forradio1"></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="drift">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="AgencyCompliance" style="width: 20px;">
+                                <input type="radio" id="rd27" value="NotInFullCompliance" name="RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidencen" data-bind="checked : RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidence"/>
+                                 <label for="rd27" class="forradio1"></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="drift">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="AgencyCompliance" style="width: 20px;">
+                                <input type="radio" id="rd28" value="NotInFullComplianceEvidenceOfCorrections" name="RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidencen" data-bind="checked : RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidence"/>
+                                 <label for="rd28" class="forradio1"></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="drift" style="padding: 0 0 0 20px; height: 75px;">
+                    <div class="drift" style="height: 25px;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="padding-left: 5px; width: 285px;">
+                                    <div class="fleft ServiceProviderPrintName">
+                                        <input style="width: 278px;" class="req" id="ServiceProviderPrintName"
+                                            onkeyup="objMaxWidth(this)" type="text" value="" data-bind="value : ServiceProviderPrintName"/>
+                                    </div>
+                                </td>
+                                <td style="width: 285px;">
+                                    <div id="divServiceProviderSignatureImage" onclick="openSignaturePad(this)" class="reqSignature1" style="position: absolute; top: -30px; width: 280px; height: 45px;">
+                                        <img id="imgServiceProviderSignatureImage" width="100%" height="100%" alt="" data-bind="attr :{ src : ServiceProviderSignatureImage}" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="fleft ServiceProviderDateSigned req">
+                                        <input class="DatePicker" style="width: 90px;" id="ServiceProviderDateSigned" type="text" value=""  data-bind="value : ServiceProviderDateSigned"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="drift" style="height: 25px;">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="padding-left: 5px; width: 285px;">
+                                    <div class="fleft HcbsAuditorPrintName">
+                                        <input style="width: 278px;" class="req" id="HcbsAuditorPrintName" onkeyup="objMaxWidth(this)" type="text" value="" data-bind="value : HcbsAuditorPrintName"/>
+                                    </div>
+                                </td>
+                                <td style="width: 285px;">
+                                    <div id="divHcbsAuditorSignatureImage" onclick="openSignaturePad(this)" class=""
+                                        style="position: absolute; top: -10px; width: 280px; height: 45px;">
+                                        <img class= "reqSignature" id="imgHcbsAuditorSignatureImage" width="100%" height="100%" alt="" data-bind="attr :{ src : HcbsAuditorSignatureImage}" /> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="fleft HcbsAuditorDateSigned">
+                                        <input class="DatePicker" style="width: 90px;" id="HcbsAuditorDateSigned" type="text" value="" data-bind="value : HcbsAuditorDateSigned"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="LastPage">
+            <iframe class="iFrameProperties" scrolling="no" src="Page_2.svg">
+            </iframe>
+            <div class="pageContent">
+                <div class="drift" style="padding: 84px 0 0 24px; height: 35px;">
+                   <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td>
+                                <div class="OfficeName fleft">
+                                    <input style="width: 234px;"  type="text" data-bind="value : AgencyNamePage1Page2"  /></div>
+                            </td>
+                            <td style="width: 295px;">
+                                <div class="Representative fleft">
+                                    <input style="width: 288px;" type="text" data-bind="value : AgencyRepNamePage1Page2"  /></div>
+                            </td>
+                            <td>
+                                <div class="DateOfAssessment fleft">
+                                    <input style="width: 150px;margin-left:20px;" type="text" value="" data-bind="value : AuditDatePage1Page2"  /></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="drift" style="padding: 0 0 0 25px; height: 700px;">
+                    <table cellpadding="0" cellspacing="0" class="NotesFindingsContinued">
+                        <tr>
+                            <td style="width: 49px;">
+                                <textarea id="NotesFindingsContinued" class="cssTextArea"  cols="20" rows="2" style="width: 705px; height: 675px; padding-top: 0;
+                                    padding-bottom: 0;" data-bind="value : NotesFindingsPage2">
+</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!--//-------------------------------------------------------------------------------------------------------------------->
+    <div class="dontPrint" style="position: fixed; top: 100%;">
+        <div id="jsonString" />
+        <div id="objSinaturePad" title="Sign Here..." style="text-align: center; overflow-y: hidden;">
+            <div class="objSignatureCanvas">
+                <canvas>
+                </canvas>
+                <hr style="position: relative; margin-top: -40px; color: Silver;" />
+            </div>
+            <br />
+            <button type="button" data-action="clear">
+                Clear</button>
+            <button type="button" data-action="save">
+                Apply Signature</button>
+        </div>
+<!--        <div id="objInitialsPad" title="Initials Here..." style="text-align: center; overflow-y: hidden;">
+            <div class="objSignatureCanvas">
+                <canvas>
+                </canvas>
+                <hr style="position: relative; margin-top: -40px; color: Silver;" />
+            </div>
+            <br />
+            <button type="button" data-action="clear">
+                Clear</button>
+            <button type="button" data-action="save">
+                Apply Initials</button>
+        </div>-->
+        <div id="objCanvas" style="padding: 2px; overflow-y: hidden;">
+            <div id="objDescription">
+            </div>
+            <hr />
+            <label id="objTextBox">
+            </label>
+            <div id="objTextArea">
+            </div>
+        </div>
+    </div>
+    <!--//-------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

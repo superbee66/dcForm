@@ -1,0 +1,431 @@
+﻿.formBody
+{
+	width: 760px;
+	min-width: 760px;
+	color: Navy;
+	font-family: Calibri;
+	font-size: 8pt;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#objTextBox, #objTextArea
+{
+	color: Navy;
+	font-family: Calibri;
+	font-size: 8pt;
+}
+
+.iFrameProperties
+{
+	position: absolute;
+	z-index: -1;
+	width: 760px;
+	height: 945px;
+	border: none; /*background-color: rgba(255,255,0, 0.1);*/
+	zoom: 1.055;
+}
+
+/*//-------------------------------------------------------------------------------------------------------------------->*/
+
+.pageContent
+{
+	width: 760px; /*background-color: rgba(255,255,0, 0.1);*/
+	position: absolute;
+	z-index: 1;
+}
+
+/*//-------------------------------------------------------------------------------------------------------------------->*/
+
+
+.formBody .drift
+{
+	position: relative;
+}
+.formBody .rowHelper
+{
+	/*font-size: 9pt;*/
+	border-bottom-color: transparent;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+.formBody tr.rowHelper td
+{
+	font-size: 9pt;
+	border-bottom-color: transparent;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+.formBody .rowHelper:hover
+{
+	cursor: pointer;
+	border-bottom-color: black;
+}
+.formBody tr.rowHelper:hover td
+{
+	border-bottom-color: black;
+}
+.formBody > table
+{
+	padding: 0px;
+	border-spacing: 0px;
+}
+.formBody .silverHeader
+{
+	/*padding: 5px; 	text-align: center;*/
+	font-weight: bold;
+	background-color: rgb(236, 236, 237);
+}
+.formBody .rowCompleted
+{
+	/*background-color: rgb(198, 255, 198);*/
+	background-color: rgba(254,204,204, 0.5);
+}
+.formBody .rowGuide:hover
+{
+	cursor: pointer;
+	background-color: rgb(198, 255, 198);
+}
+
+.labelFor
+{
+	font-family: Arial;
+	font-size: 7pt;
+}
+/*.formBody input[type=checkbox]
+{
+	margin: 0px;
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+}*/
+.formBody input[type=text]
+{
+	padding: 1px;
+	color: Navy;
+	border: 1px solid transparent;
+	background-color: transparent;
+}
+.formBody input[type=text]:hover
+{
+	border: 1px solid black;
+	cursor: pointer;
+	background-color: rgb(255, 250, 220);
+}
+.formBody input[type=text]:focus
+{
+	border: 1px solid silver;
+	border-image: none;
+	background-color: rgb(255, 254, 249);
+}
+.formBody .divOver
+{
+	border: 1px solid Transparent;
+}
+.formBody .divOver:hover
+{
+	border: 1px solid Black;
+}
+
+.formBody select
+{
+	color: Navy;
+	border-width: 0px;
+	background-color: transparent;
+}
+.formBody select:hover
+{
+	border-width: 0px;
+	cursor: pointer;
+	background-color: rgb(255, 250, 220);
+}
+.formBody select:focus
+{
+	border-width: 0px;
+	background-color: rgb(255, 254, 249);
+}
+.formBody input[readonly]
+{
+	color: Navy;
+}
+
+.outOfSite
+{
+	top: 100%;
+	position: fixed;
+	overflow-y: hidden;
+}
+.pageBreak
+{
+	page-break-after: always;
+}
+.formBody input[type=checkbox]
+{
+	top: 100%;
+	position: fixed;
+	overflow-y: hidden;
+}
+.formBody input[type=checkbox] + label
+{
+	background: url('Spacer.gif') no-repeat;
+	background-size: 15px auto;
+	border: 1px solid Transparent;
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+}
+.formBody input[type=checkbox] + label:hover
+{
+	border: 1px solid Black;
+	background-color: #fffadc;
+}
+.formBody input[type=checkbox]:checked + label
+{
+	background: url('Checked.png') no-repeat; /*background: url('../../Images/JustChecked.png') no-repeat;*/
+	background-size: 15px auto;
+	border: 1px solid Transparent;
+}
+
+.formBody .cssTextArea
+{
+	padding: 2px;
+	color: Navy;
+	border: 1px solid transparent;
+	border-image: none;
+	height: 25px;
+	font-family: Calibri;
+	font-size: 8pt;
+	-ms-overflow-y: hidden;
+	background-color: transparent;
+}
+.formBody .cssTextArea:hover
+{
+	border: 1px solid black;
+	border-image: none;
+	cursor: pointer;
+	background-color: rgb(255, 250, 220);
+}
+.formBody .cssTextArea:hover
+{
+	border: 1px solid black;
+	border-image: none;
+	cursor: pointer;
+	background-color: rgb(255, 250, 220);
+}
+.formBody .cssTextArea:focus
+{
+	border: 1px solid silver;
+	border-image: none;
+	background-color: rgb(255, 254, 249);
+}
+
+.formBody .cbLabel
+{
+	top: -2px;
+	position: relative;
+}
+/*.formBody.req 
+{
+	border: 1px solid Red;
+	border-image: none;
+}*/
+.formBody .reqField
+{
+	/*border: 1px solid Red; 	border-image: none;*/
+	background-color: rgba(255, 0, 0, 0.4);
+}
+
+.reqSignature
+{
+	border: 1px solid transparent;
+	border-image: none;
+}
+.reqSignature:hover
+{
+	border: 1px solid black;
+	border-image: none;
+	background-image: url("SignHere.png");
+	background-repeat: no-repeat;
+	background-size: 75px auto;
+	background-color: rgb(255, 250, 220);
+}
+.reqInitials
+{
+	border: 1px solid transparent;
+	border-image: none;
+}
+.reqInitials:hover
+{
+	border: 1px solid black;
+	border-image: none;
+	background-image: url("Initials.png");
+	background-repeat: no-repeat;
+	background-size: 75px auto;
+	background-color: rgb(255, 250, 220);
+}
+
+.clear
+{
+	clear: both;
+}
+.lhNormal
+{
+	line-height: normal;
+}
+.lh10
+{
+	line-height: 10px;
+}
+.lh12
+{
+	line-height: 12px;
+}
+.lh14
+{
+	line-height: 14px;
+}
+.lh24
+{
+	line-height: 24px;
+}
+.w20p
+{
+	width: 20%;
+}
+.w25p
+{
+	width: 25%;
+}
+.w50p
+{
+	width: 50%;
+}
+.w100p
+{
+	width: 100%;
+}
+.mw50
+{
+	min-width: 50px;
+}
+w35
+{
+	width: 35px;
+}
+.w50
+{
+	width: 50px;
+}
+.w100
+{
+	width: 100px;
+}
+.w750
+{
+	width: 750px;
+}
+.noBorder
+{
+	border: 0px currentColor;
+	border-image: none;
+}
+.bSolid
+{
+	border: 1px solid black;
+	border-image: none;
+}
+.bTop
+{
+	border-top-color: black;
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+.bBottom
+{
+	border-bottom-color: black;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+.bLeft
+{
+	border-left-color: black;
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+.bRight
+{
+	border-right-color: black;
+	border-right-width: 1px;
+	border-right-style: solid;
+}
+.bRed
+{
+	border: 1px solid red;
+	border-image: none;
+}
+.noWrap
+{
+	white-space: nowrap;
+}
+.pad2
+{
+	padding: 2px;
+}
+.pad5
+{
+	padding: 5px;
+}
+.padL2
+{
+	padding-left: 2px;
+}
+.padT2
+{
+	padding-top: 2px;
+}
+.padT5
+{
+	padding-top: 5px;
+}
+.padT10
+{
+	padding-top: 10px;
+}
+.mar2
+{
+	margin: 2px;
+}
+.marL2
+{
+	margin-left: 2px;
+}
+.fcenter
+{
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+.fleft
+{
+	float: left;
+}
+.fright
+{
+	float: right;
+}
+.inline
+{
+	display: inline-block;
+}
+.pointer
+{
+	cursor: pointer;
+}
+.helpback
+{
+	background-color: rgba(255,250,220, 0.5);
+}
+.helpborder
+{
+	border: 1px solid Red;
+}

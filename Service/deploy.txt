@@ -1,0 +1,13 @@
+﻿FORM Developer:
+  
+  - Website Project
+	- Add your supporting content to the doc folder, do not delete existing doc/* folders if you do not own them
+	- Add supporting cSharp class files to the App_Code/* folder
+
+IIS
+  - IIS AppPool must be running .Net 4 Integrated Pipeline mode
+    * Strange anomalies such as DataContract DataMember Date types will sporadically set to there default values in Classic Mode
+
+
+  - WebDAV CAN NOT BE INSTALLED
+	Symptoms: InfoPath will attempt to utilize it & will always appear to be operating with integrated security when user opens a form but will never authenticate them correctly.

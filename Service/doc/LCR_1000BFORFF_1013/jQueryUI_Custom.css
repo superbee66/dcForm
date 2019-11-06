@@ -1,0 +1,60 @@
+.ui-datepicker {
+	box-shadow: 1px 1px 2px black;
+}
+.ui-accordion .ui-accordion-header {
+	border-radius: 0px; -moz-border-radius: 0; -webkit-border-radius: 0;
+}
+.ui-accordion .ui-accordion-content {
+	border-radius: 0px; -moz-border-radius: 0; -webkit-border-radius: 0;
+}
+.ui-accordion .ui-accordion-header a {
+	padding: 0.5em 0.5em 0.5em 0.7em; font-size: 12px; font-weight: bold; display: block;
+}
+.ui-dialog {
+	box-shadow: 0px 2px 12px rgba(0,0,0,0.6); -webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); -moz-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+.ui-dialog .ui-dialog-titlebar {
+	border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(151, 151, 151); padding: 0.7em 1em 0.6em; border-image: none; position: relative; -moz-border-radius: 0; -webkit-border-radius: 0;
+}
+.ui-dialog .ui-dialog-title {
+	text-shadow: 0px 1px 0px gray;
+}
+.ui-widget-overlay {
+	background: rgb(51, 51, 51); margin: 0px; padding: 0px; left: 0px; top: 0px; width: 100%; height: 100%; position: fixed; opacity: 0.75;
+}
+.ui-widget-shadow {
+	background: rgb(0, 0, 0); margin: -8px 0px 0px -8px; padding: 8px; border-radius: 8px; opacity: 0.3; -moz-border-radius: 8px; -webkit-border-radius: 8px;
+}
+.ui-tabs .ui-tabs-nav {
+	background: none; margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+.ui-tabs .ui-tabs-nav li {
+	list-style: none; margin: 0px; padding: 0px; border-radius: 0px; border-image: none; top: 1px; border-top-color: silver; border-right-color: silver; border-bottom-color: currentColor !important; border-left-color: silver; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 0px !important; border-left-width: 1px; border-top-style: solid; border-right-style: solid; border-bottom-style: none !important; border-left-style: solid; float: left; white-space: nowrap; position: relative; -moz-border-radius: 0; -webkit-border-radius: 0;
+}
+.ui-tabs .ui-tabs-nav li a {
+	font-size: 12px; font-weight: bold; text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li a:hover {
+	background-position: top; background-image: url("Glass.png"); background-repeat: repeat-x; background-color: rgb(226, 209, 186);
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a {
+	background-position: top; margin: 0px; cursor: pointer; text-shadow: 0px 1px 0px #fff; background-image: url("Glass.png"); background-repeat: repeat-x; background-color: rgb(226, 209, 186);
+}
+.tooltip {
+	background-position: 2px 2px; background-image: url("Warning-small.png"); background-repeat: no-repeat;
+}
+.ui-tooltip {
+	background: rgb(255, 250, 220); padding: 10px; border-radius: 20px; border: 2px solid red; border-image: none; text-align: right; color: red; white-space: nowrap; box-shadow: 0px 0px 7px black;
+}
+.watermark {
+	color: rgb(153, 153, 153) !important;
+}
+.ui-autocomplete {
+	-ms-overflow-x: hidden; -ms-overflow-y: auto; max-height: 100px;
+}
+* html .ui-autocomplete {
+	height: 100px;
+}
+.ui-autocomplete-loading {
+	background: url("ui-anim_basic_16x16.gif") no-repeat right white;
+}

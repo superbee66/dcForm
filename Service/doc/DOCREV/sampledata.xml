@@ -1,0 +1,12 @@
+<my:DOCREV xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+	<my:TargetDocTypeVer>1.0.0.1</my:TargetDocTypeVer>
+	<my:TargetDocTypeFiles/>
+	<my:TargetDocTypeName>DOCREV</my:TargetDocTypeName>
+	<my:TargetDocTypeDotNetAssembly/>
+	<my:TargetDocMD5/>
+	<xd:SchemaInfo LocalName="DOCREV" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50">
+		<xd:Namespaces>
+			<xd:Namespace LocalName="DOCREV" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50"/>
+		</xd:Namespaces>
+	</xd:SchemaInfo>
+</my:DOCREV>

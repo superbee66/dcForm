@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.progablab.com/LCR_1000AFORFF_0114" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LCR_1000AFORFF_0114" nillable="true" xmlns:q1="http://schemas.progablab.com/LCR_1000AFORFF_0114" type="q1:LCR_1000AFORFF_0114" />
+  <xsd:complexType name="LCR_1000AFORFF_0114">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="AgencyNamePage1Page2" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AgencyRepNamePage1Page2" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="AuditDatePage1Page2" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb03RespiratoryTherapy" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb05OccupationalTherapy" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb06PhysicalTherapy" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb07SPTHearingTherapy" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb19ICFMR" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb20Hospice" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb23Homemaker" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb26Respite" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb28AttendantCare" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb29HomeHealthAide" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb30HomeHealthNurse" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb31NonEmergencyTransportation" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb32Habilitation" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb39PersonalCareAttendant" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb42FORMayCare" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="Cb46EnvironmentalModifications" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="cbOther" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OtherText" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TotalDirectCareStaff" type="xsd:int" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TotalFilesAudited" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbAreServicesDeliveredYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AreServicesDeliveredYesAddress" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="AreServicesDeliveredYesDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AreServicesDeliveredYesInspectedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbHasAnOLCRInspectionYesNoNA" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbIsAgencyMedicareCertiFiedYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbTransportingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbInsuranceRegistrationCurrentYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbIfYesAgencyStaffMatrixYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbAreClassesForCPRYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbDoesTheDirectorYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbIfYesDoesTheDirectorYesNo" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IfNoDoesTheDirectorExpDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbReceivedCurrentAgencyStaffYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbIsTheAgencyRequestingYesNo" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="NotesFindingsPage1" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbAgencyWasInFullNotInFullButCorrectedNotInFullEvidence" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="NotesFindingsPage2" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ServiceProviderPrintName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ServiceProviderSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ServiceProviderDateSigned" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="HcbsAuditorPrintName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="HcbsAuditorSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="HcbsAuditorDateSigned" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

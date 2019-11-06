@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema targetNamespace="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2016-01-16T03:31:50" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="DOCREV">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="my:TargetDocTypeVer" minOccurs="0"/>
+				<xsd:element ref="my:TargetDocTypeFiles" minOccurs="0"/>
+				<xsd:element ref="my:TargetDocTypeName" minOccurs="0"/>
+				<xsd:element ref="my:TargetDocTypeDotNetAssembly" minOccurs="0"/>
+				<xsd:element ref="my:TargetDocMD5" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:anyAttribute processContents="lax" namespace="http://www.w3.org/XML/1998/namespace"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="TargetDocTypeVer" type="my:requiredString"/>
+	<xsd:element name="TargetDocTypeFiles" type="my:requiredBase64Binary"/>
+	<xsd:element name="TargetDocTypeName" type="my:requiredString"/>
+	<xsd:element name="TargetDocTypeDotNetAssembly" nillable="true" type="xsd:base64Binary"/>
+	<xsd:element name="TargetDocMD5" type="xsd:string"/>
+	<xsd:simpleType name="requiredString">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="requiredAnyURI">
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="requiredBase64Binary">
+		<xsd:restriction base="xsd:base64Binary">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

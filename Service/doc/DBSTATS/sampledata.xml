@@ -1,0 +1,8 @@
+<my:DBSTATS xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2015-07-07T03:55:17" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+	<my:LastOptimized/>
+	<xd:SchemaInfo LocalName="myFields" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2015-07-07T03:55:17">
+		<xd:Namespaces>
+			<xd:Namespace LocalName="myFields" NamespaceURI="http://schemas.microsoft.com/office/infopath/2003/myXSD/2015-07-07T03:55:17"/>
+		</xd:Namespaces>
+	</xd:SchemaInfo>
+</my:DBSTATS>

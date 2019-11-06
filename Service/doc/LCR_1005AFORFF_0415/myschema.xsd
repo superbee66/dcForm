@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://schemas.progablab.com/LCR_1005AFORFF_0415" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="LCR_1005AFORFF_0415" nillable="true" xmlns:q1="http://schemas.progablab.com/LCR_1005AFORFF_0415" type="q1:LCR_1005AFORFF_0415" />
+  <xsd:complexType name="LCR_1005AFORFF_0415">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VendorName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="OfficeName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AddressLineOne" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryPhone" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DateOfInspection" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TimeOfInspection" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorName" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CbInspectionPurposeLicensingRequirement" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CbInspectionPurposeLifeSafetyRequirements" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CbInspectionPurposeAuditRequirements" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CbInspectionPurposeConductAnInquiry" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CbInspectionPurposeOther" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectionPurposeOtherText" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="QuestionsSuperVisorName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="QuestionsSuperVisorPhone" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AdminReviewSuperVisorName" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="AdminReviewSuperVisorPhone" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RbProviderNotPresentProviderRefusedToSign" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ProviderSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ProviderDateSigned" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="InspectorSignatureImage" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="InspectorDateSigned" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
