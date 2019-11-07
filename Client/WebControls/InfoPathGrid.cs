@@ -274,7 +274,7 @@ namespace dCForm.Client.WebControls
         /// <summary>
         ///     If the dCForm DCF_Relay\web.config IIS AppRoot folder exists then we know
         ///     the a relay HttpHandler exists; use that. If not then string.empty; don't relay anything,
-        ///     communicate directly with the dCForm.Core server for content files, IPB.svc web
+        ///     communicate directly with the dCForm server for content files, IPB.svc web
         ///     service calls & DocXmlHandler.ashx renderings. Developers may also specify there
         ///     own DCF_Relay (possibly on another server).
         /// </summary>

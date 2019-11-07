@@ -10,7 +10,7 @@ namespace dCForm.Client
 {
     /// <summary>
     ///     The only means of communications to the Core. No in memory/direct reference is every made
-    ///     by dCForm.Client to dCForm.Core. All communication is over WCF. The WCF client proxy should
+    ///     by dCForm.Client to dCForm. All communication is over WCF. The WCF client proxy should
     ///     be generated & wrapped by this. It's the developer responsibility to do this.
     ///     When out parameters are present... Invokes underlying WCF proxied data operation utilizing named parameters as
     ///     VS2015 seems to sequentially reorder parameters when "out"(s) are present. It always places them at the end of the

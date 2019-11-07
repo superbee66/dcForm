@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1BFD140E-7D2B-44A5-9BA8-2D8FD73DF516}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dCForm.Util</RootNamespace>
+    <AssemblyName>dCForm.Util</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Base36.cs" />
+    <Compile Include="Cab\CabExtract.cs" />
+    <Compile Include="Cab\CabinetInfo.cs" />
+    <Compile Include="Cab\CabInfoExtensions.cs" />
+    <Compile Include="Merge\ClassBuilder.cs" />
+    <Compile Include="CustomAttributeDataExtensions.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Encrypt.cs" />
+    <Compile Include="Html.cs" />
+    <Compile Include="Merge\ClassProperty.cs" />
+    <Compile Include="Merge\ClassSignature.cs" />
+    <Compile Include="Merge\ImplicitNumicTypeConversionExtension.cs" />
+    <Compile Include="MimeExtensionHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyOverlay.cs" />
+    <Compile Include="Rand.cs" />
+    <Compile Include="Reflection.cs" />
+    <Compile Include="Serialization.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="TypeHelperExtensions.cs" />
+    <Compile Include="UrlParms.cs" />
+    <Compile Include="Xsd\Res.cs" />
+    <Compile Include="Xsd\XmlSerializationReader1.cs" />
+    <Compile Include="Xsd\Xsd.cs" />
+    <Compile Include="Xsd\XsdExporter.cs" />
+    <Compile Include="Xsd\XsdParameters.cs" />
+    <Compile Include="Xsd\XsdParametersSerializer.cs" />
+    <Compile Include="_namespaceComments.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Externals\Microsoft.Deployment.Compression.Cab\Microsoft.Deployment.Compression.Cab.csproj">
+      <Project>{23803470-a881-4067-b35f-993227dab2cb}</Project>
+      <Name>Microsoft.Deployment.Compression.Cab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Externals\Microsoft.Deployment.Compression\Microsoft.Deployment.Compression.csproj">
+      <Project>{aa15ba26-6bfb-4e4f-8d5c-fe69bbd1a0ec}</Project>
+      <Name>Microsoft.Deployment.Compression</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

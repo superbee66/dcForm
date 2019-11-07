@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dCForm.Core", "Core\dCForm.Core.csproj", "{C9065636-B397-4FB3-B9DE-8FE5A754210A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dCForm", "dcForm\dCForm.csproj", "{C9065636-B397-4FB3-B9DE-8FE5A754210A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dCForm.Client", "Client\dCForm.Client.csproj", "{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}"
 EndProject
@@ -14,6 +14,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Service", "Service\", "{584
 		SccLocalPath = ""
 		SccProvider = ""
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{6FFFC718-3D54-4E34-8A46-9B7433A3B1D6}|dCForm.Client.dll;{c9065636-b397-4fb3-b9de-8fe5a754210a}|dCForm.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_2544"
 		Debug.AspNetCompiler.PhysicalPath = "Service\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2544\"

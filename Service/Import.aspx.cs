@@ -3,9 +3,9 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Web.UI;
 using dCForm.Client.Util;
-using dCForm.Core;
-using dCForm.Core.Template.Filesystem;
-using dCForm.Core.Util;
+using dCForm;
+using dCForm.Template.Filesystem;
+using dCForm.Util;
 
 public partial class _Import : Page
 {

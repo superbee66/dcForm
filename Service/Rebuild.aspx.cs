@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.UI;
-using dCForm.Core.Storage.Nosql;
+using dCForm.Storage.Nosql;
 
 public partial class _Rebuild : Page
 {

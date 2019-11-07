@@ -820,7 +820,7 @@ EXCLUDE                = C:/FORM-FOCUS/dCForm/dev/Core/Lucene.Net \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Client\Xsf \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Client\Properties \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Client\Util \
-                         C:\_\FORM-FOCUS\dCForms\Dev\Src\dCForm.Core.TestProject \
+                         C:\_\FORM-FOCUS\dCForms\Dev\Src\dCForm.TestProject \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Forms\XsnXml \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Client\Properties \
                          C:\_\FORM-FOCUS\dCForms\Dev\Src\Client\WebControls\images \
