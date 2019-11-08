@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Util;
 
 namespace dCForm.Storage.Sql.Merge

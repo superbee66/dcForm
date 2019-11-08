@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Format;
 using dCForm.Format.XsnXml;
 using dCForm.Template;

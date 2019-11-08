@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Util.Cab;
 
 namespace dCForm.Template.Nosql

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Format;
 using dCForm.Util.Zip;
 using Lucene.Net.Analysis;
@@ -44,11 +44,11 @@ namespace dCForm.Storage.Nosql
         ///     System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments) +76
         ///     System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters,
         ///     CultureInfo culture) +211
-        ///     dCForm.Client.<>c__DisplayClass2.
+        ///     dCForm.<>c__DisplayClass2.
         ///     <Info>
         ///         b__1() +164
-        ///         dCForm.Client.Util.CacheMan.Cache(Func`1 itemFactory, Boolean forcedRefresh, String cacheKey) +133
-        ///         dCForm.Client.ClientBaseDocController`1.Info(String DocTypeName) +219
+        ///         dCForm.Util.CacheMan.Cache(Func`1 itemFactory, Boolean forcedRefresh, String cacheKey) +133
+        ///         dCForm.ClientBaseDocController`1.Info(String DocTypeName) +219
         ///         ISP.ISPFormsList.
         ///         <get_DataSource>
         ///             b__0(String m) +192

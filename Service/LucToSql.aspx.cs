@@ -7,9 +7,9 @@ using System.Web.UI;
 using dCForm;
 using dCForm.Format;
 using dCForm.Storage.Sql;
-using dCForm.Client;
-using dCForm.Client.Util;
-using dCForm.Client.DCF_Relay;
+
+using dCForm.Util;
+using dCForm.DCF_Relay;
 
 public partial class _LucToSql : Page
 {

@@ -1,5 +1,5 @@
 using System;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Format.Json;
 using dCForm.Format.XsnXml;
 using dCForm.Template;

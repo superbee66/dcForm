@@ -8,8 +8,8 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Xml.Serialization;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Storage.Sql;
 using dCForm.Format;
 

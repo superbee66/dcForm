@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Schema;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Template;
 
 namespace dCForm.Format.XsnXml

@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using System.Web.Script.Serialization;
 using System.Xml.Serialization;
-using dCForm.Client.Util;
+using dCForm.Util;
+using Newtonsoft.Json;
 
 namespace dCForm
 {
@@ -56,7 +57,7 @@ namespace dCForm
 
         public string AsTermTxt()
         {
-            return Serialize.Json.Serialize(new
+            return JsonConvert.SerializeObject(new
             {
                 //TODO:sort dictionary before serializing
                 DocTypeName,

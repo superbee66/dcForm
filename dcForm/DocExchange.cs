@@ -5,8 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using dCForm.Client;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Template.Filesystem;
 
 namespace dCForm

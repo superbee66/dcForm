@@ -10,8 +10,8 @@ using System.Reflection;
 using System.Text;
 using System.Web.DynamicData;
 using System.Xml;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Format;
 using dCForm.Storage.Sql.Merge;
 using dCForm.Storage.Sql.Reverser;

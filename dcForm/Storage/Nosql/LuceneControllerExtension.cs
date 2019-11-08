@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using dCForm.Client;
+
 using dCForm.Format;
 using Lucene.Net.Analysis.Standard;
 using Lucene.Net.Documents;

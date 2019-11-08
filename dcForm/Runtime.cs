@@ -8,8 +8,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Template;
 using dCForm.Util;
 using dCForm.Util.Xsd;
@@ -31,7 +31,7 @@ namespace dCForm
         public static readonly Dictionary<string, string> USING_NAMESPACES = new Dictionary<string, string>
         {
             { "dCForm", "dCForm.dll" },
-            { "dCForm.Client", "dCForm.Client.dll" },
+            { "dCForm.Client", "dCForm.dll" },
             { "System.Collections.Generic", "System.dll" },
             { "System.ComponentModel.DataAnnotations.Schema", "EntityFramework.dll" },
             { "System.Runtime.Serialization", "System.Runtime.Serialization.dll" },

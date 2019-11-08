@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using dCForm.Client;
+
 using dCForm.Format;
 using dCForm.Util.Zip;
 using Lucene.Net.Documents;

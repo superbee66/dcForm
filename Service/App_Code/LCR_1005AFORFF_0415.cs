@@ -1,6 +1,8 @@
-using dCForm.Client;
+
 using System;
 using System.Collections.Generic;
+using dCForm;
+
 public class LCR_1005AFORFF_0415 : IDocModel {
     public LCR_1005AFORFF_0415() { }
     public string VendorName { get; set; }

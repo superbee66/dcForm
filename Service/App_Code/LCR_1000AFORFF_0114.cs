@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using dCForm.Client;
+using dCForm;
+
 public class LCR_1000AFORFF_0114 : IDocModel {
     public string AgencyNamePage1Page2 { get; set; }
     public string AgencyRepNamePage1Page2 { get; set; }

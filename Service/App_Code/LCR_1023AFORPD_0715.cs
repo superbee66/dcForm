@@ -1,6 +1,8 @@
-using dCForm.Client;
+
 using System;
 using System.Collections.Generic;
+using dCForm;
+
 //Checkboxes(Cb) are bool and radios(Rb) are string
 public class LCR_1023AFORPD_0715 : IDocModel
 {

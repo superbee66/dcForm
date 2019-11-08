@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Util;
 
 namespace dCForm.Storage.Sql

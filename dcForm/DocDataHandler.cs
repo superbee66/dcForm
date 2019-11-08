@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
-using dCForm.Client;
-using dCForm.Client.Util;
+
+using dCForm.Util;
 using dCForm.Format;
 using dCForm.Template.Filesystem;
 using dCForm.Util;

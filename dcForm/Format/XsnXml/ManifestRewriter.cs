@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Web;
-using dCForm.Client.DCF_Relay;
-using dCForm.Client.Util;
+using dCForm.DCF_Relay;
+using dCForm.Util;
 using dCForm.Template;
 
 namespace dCForm.Format.XsnXml
@@ -32,7 +32,7 @@ namespace dCForm.Format.XsnXml
 
 
             // render the publishUrl as the calling request or that of a registered listener
-            string publishUrl = UrlReferrer_AbsoluteUri.Contains("/" + DCF_Relay.DirectoryName)
+            string publishUrl = UrlReferrer_AbsoluteUri.Contains("/" + DCF_Relay.DCF_Relay.DirectoryName)
                                     ? UrlReferrer_AbsoluteUri
                                     : RequestPaths.AbsoluteUri;
 

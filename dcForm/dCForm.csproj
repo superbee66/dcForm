@@ -66,7 +66,9 @@
     </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DCF_Relay\DCF_Relay.cs" />
     <Compile Include="DocRevDateTimeExtension.cs" />
+    <Compile Include="DocTypeInfo.cs" />
     <Compile Include="Format\DocInterpreter.cs" />
     <Compile Include="Format\Docx\DocxInterpreter.cs" />
     <Compile Include="Format\IDocByteInterpreter.cs" />
@@ -86,8 +88,14 @@
     <Compile Include="BaseAutoIdent.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="DocExchange.cs" />
+    <Compile Include="IDocController.cs" />
+    <Compile Include="IDocIdentifiers.cs" />
+    <Compile Include="IDocLogistics.cs" />
+    <Compile Include="IDocModel.cs" />
     <Compile Include="IDocTerm.cs" />
+    <Compile Include="LightDoc.cs" />
     <Compile Include="LightDocExtensions.cs" />
+    <Compile Include="Parm.cs" />
     <Compile Include="Runtime.cs" />
     <Compile Include="RuntimeTypeNamer.cs" />
     <Compile Include="Storage\Nosql\BaseDocExtensions.cs" />
@@ -123,16 +131,23 @@
     <Compile Include="Util\Cab\CabInfoExtensions.cs" />
     <Compile Include="Util\Base36.cs" />
     <Compile Include="Util\Cab\CabExtract.cs" />
+    <Compile Include="Util\CacheMan.cs" />
     <Compile Include="Util\CustomAttributeDataExtensions.cs" />
     <Compile Include="Storage\Sql\Merge\ClassMerger.cs" />
     <Compile Include="Storage\Sql\Merge\ClassProperty.cs" />
     <Compile Include="Storage\Sql\Merge\ClassSignature.cs" />
     <Compile Include="Storage\Sql\Merge\ImplicitTypeConversionExtension.cs" />
+    <Compile Include="Util\Dynamic.cs" />
     <Compile Include="Util\ExceptionExtrensions.cs" />
+    <Compile Include="Util\FileSystem.cs" />
+    <Compile Include="Util\MemoryStreamExtensions.cs" />
     <Compile Include="Util\ObjectDumper.cs" />
+    <Compile Include="Util\PropertyDefaultValue.cs" />
     <Compile Include="Util\Reflection.cs" />
+    <Compile Include="Util\RequestPaths.cs" />
     <Compile Include="Util\SelfMarshalByRefObject.cs" />
     <Compile Include="Util\StringExtensions.cs" />
+    <Compile Include="Util\StringTransform.cs" />
     <Compile Include="Util\Xsd\Res.cs" />
     <Compile Include="Util\TypeExtensions.cs" />
     <Compile Include="Util\MimeExtensionHelper.cs" />
@@ -230,6 +245,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization">
       <Private>False</Private>
     </Reference>
@@ -265,6 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DCF_Relay\web.config" />
     <None Include="packages.config" />
     <None Include="Resources\template.json" />
     <None Include="Util\readme.txt" />
@@ -282,12 +299,6 @@
   <ItemGroup>
     <None Include="Resources\readme.txt" />
     <None Include="Resources\default.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Client\dCForm.Client.csproj">
-      <Project>{6fffc718-3d54-4e34-8a46-9b7433a3b1d6}</Project>
-      <Name>dCForm.Client</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

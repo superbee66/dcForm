@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using dCForm.Client.Util;
+using dCForm.Util;
 using dCForm.Format;
 
 namespace dCForm.Template.Filesystem {

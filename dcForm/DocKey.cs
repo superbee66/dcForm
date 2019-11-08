@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Web.Security;
-using dCForm.Client.Util;
+using dCForm.Util;
+using Newtonsoft.Json;
 
 namespace dCForm
 {
@@ -34,16 +35,16 @@ namespace dCForm
         /// <returns>A jsoned & modified base64 string suitable for parameter UrlEncoding</returns>
         public static string DocIdFromKeys(Dictionary<string, string> DocKeys, bool ClearText = false) =>
             ClearText
-                ? Serialize.Json.Serialize(DocKeys)
+                ? JsonConvert.SerializeObject(DocKeys)
                 : MachineKey.Encode(
                     Encoding.UTF8.GetBytes(
-                        Serialize.Json.Serialize(DocKeys)),
+                        JsonConvert.SerializeObject(DocKeys)),
                     MachineKeyProtection.Encryption);
 
         public static Dictionary<string, string> DocIdToKeys(string DocId) =>
             string.IsNullOrWhiteSpace(DocId)
                 ? new Dictionary<string, string>()
-                : Serialize.Json.Deserialize<Dictionary<string, string>>(
+                : JsonConvert.DeserializeObject<Dictionary<string, string>>(
                     Encoding.UTF8.GetString(
                         MachineKey.Decode(DocId, MachineKeyProtection.Encryption)));
     }

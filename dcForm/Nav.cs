@@ -3,9 +3,9 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Caching;
-using dCForm.Client;
-using dCForm.Client.DCF_Relay;
-using dCForm.Client.Util;
+
+using dCForm.DCF_Relay;
+using dCForm.Util;
 using dCForm.Util.Zip;
 
 namespace dCForm
@@ -26,7 +26,7 @@ namespace dCForm
                     HttpUtility.UrlDecode(queryStringFieldValues[Parm.RelayUrl]),
                     long.Parse(queryStringFieldValues[Parm.LogSequenceNumber] ?? "0"));
             else
-                r = ((BaseDoc) (queryStringFieldValues.AllKeys.Any(m => m == Parm.DocCache)
+                r = ((BaseDoc)(queryStringFieldValues.AllKeys.Any(m => m == Parm.DocCache)
                                     ? HttpRuntime.Cache[queryStringFieldValues[Parm.DocCache]]
                                     : Compressor.DecompressFromBase64String(HttpUtility.UrlDecode(queryStringFieldValues[Parm.DocBin])).FromBytes<object>()))
                     .GetDocData(HttpUtility.UrlDecode(queryStringFieldValues[Parm.RelayUrl]));
@@ -75,9 +75,9 @@ namespace dCForm
 
             // Url look like ~something
                 if (ApplicationPath.Length > 1)
-                    ResultPath = ApplicationPath + "/" + url.Substring(1);
-                else
-                    ResultPath = ApplicationPath + url.Substring(1);
+                ResultPath = ApplicationPath + "/" + url.Substring(1);
+            else
+                ResultPath = ApplicationPath + url.Substring(1);
 
             if (Uri.IsWellFormedUriString(ResultPath,
                 UriKind.Absolute))
@@ -99,7 +99,7 @@ namespace dCForm
         public static string ToUrl(string DocTypeName, string DocId, string RelayUrl = "~", long LogSequenceNumber = 0)
         {
             if (string.IsNullOrWhiteSpace(RelayUrl))
-                RelayUrl = DCF_Relay.GetRelayUrl();
+                RelayUrl = DCF_Relay.DCF_Relay.GetRelayUrl();
 
             string _Url = string.Format("{0}/DocDataHandler.ashx?{6}={4}&DocTypeName={1}&{2}={3}&LogSequenceNumber={5}",
                 RelayUrl,
@@ -127,7 +127,7 @@ namespace dCForm
         public static string ToUrl(BaseDoc BaseDoc, string RelayUrl = null)
         {
             if (string.IsNullOrWhiteSpace(RelayUrl))
-                RelayUrl = DCF_Relay.GetRelayUrl();
+                RelayUrl = DCF_Relay.DCF_Relay.GetRelayUrl();
 
             string DocTypeName = BaseDoc.DocTypeName;
 

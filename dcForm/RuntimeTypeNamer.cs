@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using dCForm.Client.Util;
+using dCForm.Util;
 
 namespace dCForm
 {

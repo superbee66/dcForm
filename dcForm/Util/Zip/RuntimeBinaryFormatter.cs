@@ -55,7 +55,7 @@ namespace dCForm.Util.Zip
         private static string ReplaceOldNames(string typeBindingExpression)
         {
             return typeBindingExpression
-                //.Replace("dCForm.Client.LightDoc, dCForm.Client", "dCForm.Client.LightDoc, dCForm")
+                //.Replace("dCForm.LightDoc, dCForm.Client", "dCForm.LightDoc, dCForm")
                 //.Replace("dCForm.Client, ", "dCForm, ")
                 ;
         }
